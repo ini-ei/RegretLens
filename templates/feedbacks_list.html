@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}振り返り一覧 - RegretLens{% endblock %}
+
+{% block content %}
+<div style="padding: 24px;">
+    <div style="margin-bottom: 24px;">
+        <h2 style="margin: 0;">振り返り一覧</h2>
+    </div>
+
+    {% if feedbacks %}
+    <div style="display: grid; gap: 16px;">
+        {% for fb in feedbacks %}
+        <div class="card">
+            <!-- カテゴリと日付 -->
+            <div style="display: flex; gap: 12px; align-items: start; margin-bottom: 12px;">
+                <span class="chip" style="background: #065fd4; color: #fff;">{{ fb.category }}</span>
+                <span style="font-size: 12px; color: #606060;">
+                    振り返り: {{ fb.created_at.strftime('%Y/%m/%d %H:%M') if fb.created_at else '' }}
+                </span>
+            </div>
+
+            <!-- 意思決定内容 -->
+            <div style="color: #030303; margin-bottom: 12px; line-height: 1.6; font-weight: 500;">
+                {{ fb.decision_text }}
+            </div>
+
+            <!-- スコア表示 -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 12px;">
+                <!-- 後悔スコア -->
+                <div style="padding: 12px; background: {% if fb.regret_score >= 4 %}#ffeaea{% elif fb.regret_score >= 3 %}#fff3e0{% else %}#e6f4ea{% endif %}; border-radius: 8px;">
+                    <div style="font-size: 11px; color: #606060; margin-bottom: 4px; text-transform: uppercase;">後悔度</div>
+                    <div style="font-size: 24px; font-weight: 400; color: {% if fb.regret_score >= 4 %}#cc0000{% elif fb.regret_score >= 3 %}#ff6b00{% else %}#00a000{% endif %};">
+                        {{ fb.regret_score }}/5
+                    </div>
+                </div>
+
+                <!-- 満足度 -->
+                <div style="padding: 12px; background: {% if fb.satisfaction_score >= 4 %}#e6f4ea{% elif fb.satisfaction_score >= 3 %}#fff3e0{% else %}#ffeaea{% endif %}; border-radius: 8px;">
+                    <div style="font-size: 11px; color: #606060; margin-bottom: 4px; text-transform: uppercase;">満足度</div>
+                    <div style="font-size: 24px; font-weight: 400; color: {% if fb.satisfaction_score >= 4 %}#00a000{% elif fb.satisfaction_score >= 3 %}#ff6b00{% else %}#cc0000{% endif %};">
+                        {{ fb.satisfaction_score }}/5
+                    </div>
+                </div>
+
+                <!-- 予測リスクとの比較 -->
+                {% if fb.predicted_regret_score %}
+                <div style="padding: 12px; background: #f9f9f9; border-radius: 8px;">
+                    <div style="font-size: 11px; color: #606060; margin-bottom: 4px; text-transform: uppercase;">予測リスク</div>
+                    <div style="font-size: 24px; font-weight: 400; color: #606060;">
+                        {{ (fb.predicted_regret_score * 100)|round|int }}%
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- 後悔理由 -->
+            {% if fb.regret_reasons %}
+            {% set reasons = fb.regret_reasons if fb.regret_reasons is iterable and fb.regret_reasons is not string else [] %}
+            {% if reasons|length > 0 %}
+            <div style="margin-bottom: 12px;">
+                <div style="font-size: 12px; color: #606060; margin-bottom: 6px; font-weight: 500;">後悔の理由:</div>
+                <div style="padding-left: 12px;">
+                    {% for reason in reasons %}
+                    <div style="font-size: 13px; color: #030303; margin-bottom: 4px; line-height: 1.5;">
+                        • {{ reason }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
+
+            <!-- メタ情報 -->
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                {% if fb.would_change %}
+                <span class="chip" style="background: #ffeaea; color: #cc0000;">やり直したい</span>
+                {% else %}
+                <span class="chip" style="background: #e6f4ea; color: #00a000;">やり直さない</span>
+                {% endif %}
+
+                <span class="chip">{{ fb.feedback_timing }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="card" style="text-align: center; padding: 48px 24px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">📊</div>
+        <div style="font-size: 16px; color: #606060; margin-bottom: 24px;">まだ振り返りがありません</div>
+        <a href="{{ url_for('index') }}" class="btn">ホームに戻る</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

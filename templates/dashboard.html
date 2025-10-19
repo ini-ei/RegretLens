@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}ホーム - RegretLens{% endblock %}
+
+{% block content %}
+<div style="padding: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2 style="margin: 0;">ホーム</h2>
+        <a href="{{ url_for('new_decision') }}" class="btn">新規記録</a>
+    </div>
+
+    {% if stats and stats.total_decisions is defined and stats.total_decisions > 0 %}
+    <!-- 統計 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <div class="card">
+            <div style="font-size: 32px; font-weight: 400; color: #030303; margin-bottom: 4px;">{{ stats.total_decisions }}</div>
+            <div style="font-size: 12px; color: #606060; text-transform: uppercase;">記録数</div>
+        </div>
+        <div class="card">
+            <div style="font-size: 32px; font-weight: 400; color: #030303; margin-bottom: 4px;">{{ stats.total_feedbacks }}</div>
+            <div style="font-size: 12px; color: #606060; text-transform: uppercase;">振り返り</div>
+        </div>
+    </div>
+
+    <!-- 後悔パターン -->
+    {% if stats.top_patterns %}
+    <div class="card" style="margin-bottom: 24px;">
+        <h3>後悔しやすいパターン</h3>
+        {% for pattern in stats.top_patterns %}
+        <div style="padding: 12px; background: #f9f9f9; border-radius: 8px; margin-bottom: 8px; border-left: 4px solid #cc0000;">
+            <div style="font-weight: 500; color: #030303; margin-bottom: 4px;">{{ pattern.pattern_type }}</div>
+            <div style="font-size: 12px; color: #606060;">後悔度 {{ pattern.average_regret|round(1) }}/5.0 · {{ pattern.occurrence_count }}回発生</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- カテゴリ分析 -->
+    {% if stats.category_regret %}
+    <div class="card" style="margin-bottom: 24px;">
+        <h3>カテゴリ別の傾向</h3>
+        {% for cat in stats.category_regret %}
+        <div style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span style="font-weight: 500;">{{ cat.category }}</span>
+                <span style="font-size: 12px; color: #606060;">{{ cat.avg_regret|round(1) }}/5.0</span>
+            </div>
+            <div style="background: #e5e5e5; height: 8px; border-radius: 4px; overflow: hidden;">
+                <div style="background: {% if cat.avg_regret >= 4 %}#cc0000{% elif cat.avg_regret >= 3 %}#ff6b00{% else %}#00a000{% endif %};
+                            height: 100%; width: {{ (cat.avg_regret / 5.0 * 100)|round|int }}%; border-radius: 4px;"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- 最近の記録 -->
+    <div style="margin-bottom: 12px;">
+        <h3>最近の記録</h3>
+    </div>
+
+    {% if decisions %}
+    <div style="display: grid; gap: 12px;">
+        {% for decision in decisions %}
+        <div class="card" style="transition: box-shadow 0.15s;">
+            <div style="display: flex; gap: 12px; align-items: start; margin-bottom: 8px;">
+                <span class="chip" style="background: #065fd4; color: #fff;">{{ decision.category }}</span>
+                <span style="font-size: 12px; color: #606060;">{{ decision.created_at.strftime('%Y/%m/%d %H:%M') if decision.created_at else '' }}</span>
+            </div>
+            <div style="color: #030303; margin-bottom: 12px; line-height: 1.6;">{{ decision.decision_text }}</div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                {% if decision.predicted_regret_score %}
+                <span class="chip" style="
+                    {% if decision.predicted_regret_score >= 0.7 %}background: #ffeaea; color: #cc0000;
+                    {% elif decision.predicted_regret_score >= 0.4 %}background: #fff3e0; color: #ff6b00;
+                    {% else %}background: #e6f4ea; color: #00a000;{% endif %}">
+                    リスク {{ (decision.predicted_regret_score * 100)|round|int }}%
+                </span>
+                {% endif %}
+                <a href="{{ url_for('feedback', decision_id=decision.id) }}" style="color: #065fd4; font-size: 13px; text-decoration: none; font-weight: 500;">振り返る</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="card" style="text-align: center; padding: 48px 24px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">📝</div>
+        <div style="font-size: 16px; color: #606060; margin-bottom: 24px;">まだ記録がありません</div>
+        <a href="{{ url_for('new_decision') }}" class="btn">最初の記録を作成</a>
+    </div>
+    {% endif %}
+
+    {% else %}
+    <!-- データなし -->
+    <div class="card" style="text-align: center; padding: 48px 24px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">📝</div>
+        <div style="font-size: 16px; color: #606060; margin-bottom: 24px;">まだ記録がありません</div>
+        <a href="{{ url_for('new_decision') }}" class="btn">最初の記録を作成</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

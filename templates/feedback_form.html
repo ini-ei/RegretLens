@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}フィードバック - RegretLens{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px;">
+    <h2 style="margin-bottom: 32px;">フィードバック</h2>
+
+    {% if decision %}
+    <!-- 意思決定の内容 -->
+    <div style="background: #fafbfc; padding: 24px; border-radius: 8px; border: 1px solid #e1e8ed; margin-bottom: 32px;">
+        <h3 style="margin: 0 0 16px 0; font-size: 16px; color: #1a1a1a;">意思決定の内容</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+                <span style="font-size: 13px; color: #5a6c7d; display: block; margin-bottom: 4px;">カテゴリ</span>
+                <span style="padding: 6px 12px; background: white; border: 1px solid #e1e8ed; border-radius: 6px; display: inline-block; font-size: 14px; font-weight: 500;">{{ decision.category }}</span>
+            </div>
+            <div>
+                <span style="font-size: 13px; color: #5a6c7d; display: block; margin-bottom: 4px;">内容</span>
+                <p style="font-size: 14px; color: #1a1a1a; margin: 0;">{{ decision.decision_text }}</p>
+            </div>
+            <div>
+                <span style="font-size: 13px; color: #5a6c7d; display: block; margin-bottom: 4px;">日時</span>
+                <span style="font-size: 14px; color: #1a1a1a;">{{ decision.created_at.strftime('%Y-%m-%d %H:%M') if decision.created_at else '' }}</span>
+            </div>
+        </div>
+    </div>
+
+    <form method="POST" action="{{ url_for('feedback', decision_id=decision.id) }}">
+        <!-- フィードバック -->
+        <div style="background: #fafbfc; padding: 24px; border-radius: 8px; border: 1px solid #e1e8ed; margin-bottom: 24px;">
+            <h3 style="margin: 0 0 20px 0; font-size: 16px;">評価</h3>
+
+            <div class="form-group">
+                <label for="regret_score">後悔度</label>
+                <input type="range" id="regret_score" name="regret_score" min="1" max="5" value="3" required
+                       oninput="document.getElementById('regretValue').textContent = this.value">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; color: #5a6c7d; margin-top: 4px;">
+                    <span>後悔していない</span>
+                    <span id="regretValue" style="font-weight: 600; color: #1a1a1a;">3</span>
+                    <span>非常に後悔</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="satisfaction_score">満足度</label>
+                <input type="range" id="satisfaction_score" name="satisfaction_score" min="1" max="5" value="3" required
+                       oninput="document.getElementById('satisfactionValue').textContent = this.value">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; color: #5a6c7d; margin-top: 4px;">
+                    <span>不満足</span>
+                    <span id="satisfactionValue" style="font-weight: 600; color: #1a1a1a;">3</span>
+                    <span>非常に満足</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="would_change" name="would_change" style="margin-right: 8px;">
+                    やり直せるなら違う選択をしたい
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="feedback_timing">フィードバック時期</label>
+                <select id="feedback_timing" name="feedback_timing" required>
+                    <option value="直後">直後</option>
+                    <option value="1日後">1日後</option>
+                    <option value="1週間後">1週間後</option>
+                    <option value="1ヶ月後">1ヶ月後</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="regret_reasons">後悔の理由（カンマ区切り）</label>
+                <textarea id="regret_reasons" name="regret_reasons" placeholder="例: 価格が高すぎた, 味が期待外れだった, 時間がかかりすぎた"></textarea>
+            </div>
+        </div>
+
+        <!-- アクションボタン -->
+        <div style="display: flex; gap: 12px;">
+            <button type="submit" class="btn" style="flex: 1;">送信</button>
+            <a href="{{ url_for('index') }}" class="btn-secondary" style="flex: 1; text-align: center; text-decoration: none; padding: 12px 24px; display: block;">キャンセル</a>
+        </div>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

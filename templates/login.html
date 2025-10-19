@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}ログイン - RegretLens{% endblock %}
+
+{% block content %}
+<h2>ログイン</h2>
+
+<form method="POST" action="{{ url_for('login') }}">
+    <div class="form-group">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password">パスワード</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn">ログイン</button>
+        <a href="{{ url_for('register') }}" class="btn btn-secondary" style="margin-left: 10px;">新規登録</a>
+    </div>
+</form>
+{% endblock %}

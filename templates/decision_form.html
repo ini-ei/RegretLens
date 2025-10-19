@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block title %}意思決定記録 - RegretLens{% endblock %}
+
+{% block content %}
+<div style="max-width: 700px;">
+    <h2 style="margin-bottom: 32px;">新しい意思決定を記録</h2>
+
+    <form method="POST" action="{{ url_for('new_decision') }}" id="decisionForm">
+        <!-- 必須項目 -->
+        <div style="background: #fafbfc; padding: 24px; border-radius: 8px; border: 1px solid #e1e8ed; margin-bottom: 16px;">
+            <div class="form-group">
+                <label for="category">カテゴリ</label>
+                <select id="category" name="category" required>
+                    <option value="">選択してください</option>
+                    <option value="食事">食事</option>
+                    <option value="買い物">買い物</option>
+                    <option value="仕事">仕事</option>
+                    <option value="学習">学習</option>
+                    <option value="娯楽">娯楽</option>
+                    <option value="その他">その他</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="decision_text">何をしましたか？</label>
+                <textarea id="decision_text" name="decision_text" required placeholder="例: ランチに1500円のパスタを注文した" rows="3"></textarea>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+                <label for="price">金額（円）</label>
+                <input type="number" id="price" name="price" value="0" step="1" required>
+            </div>
+        </div>
+
+        <!-- オプション項目（折りたたみ） -->
+        <div style="margin-bottom: 24px;">
+            <button type="button" id="toggleDetails" style="background: none; border: none; color: #5a6c7d; cursor: pointer; font-size: 14px; padding: 8px 0; display: flex; align-items: center; gap: 8px;">
+                <span id="toggleIcon">▶</span>
+                <span>詳細情報を入力（オプション）</span>
+            </button>
+
+            <div id="detailsSection" style="display: none; margin-top: 16px;">
+                <div style="background: #fafbfc; padding: 24px; border-radius: 8px; border: 1px solid #e1e8ed;">
+                    <div class="form-group">
+                        <label for="alternatives">他の選択肢（カンマ区切り）</label>
+                        <input type="text" id="alternatives" name="alternatives" placeholder="例: コンビニ弁当, 社食">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label for="mood">気分</label>
+                            <input type="range" id="mood" name="mood" min="1" max="5" value="3"
+                                   oninput="document.getElementById('moodValue').textContent = this.value">
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #5a6c7d; margin-top: 4px;">
+                                <span>悪い</span>
+                                <span id="moodValue" style="font-weight: 600; color: #1a1a1a;">3</span>
+                                <span>良い</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stress_level">ストレス</label>
+                            <input type="range" id="stress_level" name="stress_level" min="1" max="5" value="3"
+                                   oninput="document.getElementById('stressValue').textContent = this.value">
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #5a6c7d; margin-top: 4px;">
+                                <span>低</span>
+                                <span id="stressValue" style="font-weight: 600; color: #1a1a1a;">3</span>
+                                <span>高</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taste_expectation">期待値</label>
+                            <input type="range" id="taste_expectation" name="taste_expectation" min="1" max="5" value="3"
+                                   oninput="document.getElementById('tasteValue').textContent = this.value">
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #5a6c7d; margin-top: 4px;">
+                                <span>低</span>
+                                <span id="tasteValue" style="font-weight: 600; color: #1a1a1a;">3</span>
+                                <span>高</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="health_value">健康度</label>
+                            <input type="range" id="health_value" name="health_value" min="1" max="5" value="3"
+                                   oninput="document.getElementById('healthValue').textContent = this.value">
+                            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #5a6c7d; margin-top: 4px;">
+                                <span>低</span>
+                                <span id="healthValue" style="font-weight: 600; color: #1a1a1a;">3</span>
+                                <span>高</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="day_of_week">曜日</label>
+                            <select id="day_of_week" name="day_of_week">
+                                <option value="月曜日">月曜日</option>
+                                <option value="火曜日">火曜日</option>
+                                <option value="水曜日">水曜日</option>
+                                <option value="木曜日">木曜日</option>
+                                <option value="金曜日">金曜日</option>
+                                <option value="土曜日">土曜日</option>
+                                <option value="日曜日">日曜日</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time_of_day">時刻</label>
+                            <input type="time" id="time_of_day" name="time_of_day">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" id="with_others" name="with_others" style="margin-right: 8px;">
+                            他の人と一緒
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden inputs with defaults -->
+        <input type="hidden" id="hunger_level" name="hunger_level" value="3">
+        <input type="hidden" id="weather" name="weather" value="晴れ">
+        <input type="hidden" id="budget_remaining" name="budget_remaining" value="0">
+        <input type="hidden" id="time_required" name="time_required" value="0">
+
+        <!-- アクションボタン -->
+        <div style="display: flex; gap: 12px;">
+            <button type="button" class="btn-secondary" id="predictBtn" style="flex: 1;">後悔リスクを予測</button>
+            <button type="submit" class="btn" style="flex: 1;">記録する</button>
+        </div>
+
+        <a href="{{ url_for('index') }}" style="display: block; text-align: center; margin-top: 16px; color: #5a6c7d; text-decoration: none; font-size: 14px;">キャンセル</a>
+    </form>
+
+    <!-- 予測結果 -->
+    <div id="prediction-result" style="margin-top: 32px; display: none;">
+        <div style="background: #fffbeb; padding: 24px; border-radius: 8px; border: 1px solid #fde68a;">
+            <h3 style="margin: 0 0 20px 0; font-size: 18px; color: #92400e;">後悔リスク予測</h3>
+            <div id="prediction-content"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Toggle details section
+document.getElementById('toggleDetails').addEventListener('click', function() {
+    const details = document.getElementById('detailsSection');
+    const icon = document.getElementById('toggleIcon');
+    if (details.style.display === 'none') {
+        details.style.display = 'block';
+        icon.textContent = '▼';
+    } else {
+        details.style.display = 'none';
+        icon.textContent = '▶';
+    }
+});
+
+// Auto-set day of week
+const days = ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'];
+const today = new Date().getDay();
+document.getElementById('day_of_week').value = days[today];
+
+// Auto-set time
+const now = new Date();
+const hours = String(now.getHours()).padStart(2, '0');
+const minutes = String(now.getMinutes()).padStart(2, '0');
+document.getElementById('time_of_day').value = `${hours}:${minutes}`;
+
+document.getElementById('predictBtn').addEventListener('click', function() {
+    const formData = {
+        category: document.getElementById('category').value,
+        decision_text: document.getElementById('decision_text').value,
+        alternatives: document.getElementById('alternatives').value.split(',').map(s => s.trim()).filter(s => s),
+        context: {
+            mood: parseInt(document.getElementById('mood').value),
+            stress_level: parseInt(document.getElementById('stress_level').value),
+            hunger_level: parseInt(document.getElementById('hunger_level').value),
+            time_of_day: document.getElementById('time_of_day').value,
+            day_of_week: document.getElementById('day_of_week').value,
+            weather: document.getElementById('weather').value,
+            with_others: document.getElementById('with_others').checked,
+            budget_remaining: parseFloat(document.getElementById('budget_remaining').value)
+        },
+        decision_factors: {
+            price: parseFloat(document.getElementById('price').value),
+            taste_expectation: parseInt(document.getElementById('taste_expectation').value),
+            health_value: parseInt(document.getElementById('health_value').value),
+            time_required: parseFloat(document.getElementById('time_required').value)
+        }
+    };
+
+    fetch('{{ url_for("predict_regret") }}', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        const resultDiv = document.getElementById('prediction-result');
+        const contentDiv = document.getElementById('prediction-content');
+
+        let riskColor = data.risk_level === '高' ? '#ef4444' : data.risk_level === '中' ? '#f59e0b' : '#10b981';
+        let riskBg = data.risk_level === '高' ? '#fee2e2' : data.risk_level === '中' ? '#fef3c7' : '#d1fae5';
+        let riskTextColor = data.risk_level === '高' ? '#991b1b' : data.risk_level === '中' ? '#92400e' : '#065f46';
+
+        let html = `
+            <div style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                    <span style="font-size: 48px; font-weight: 700; color: ${riskColor};">${Math.round(data.regret_score * 100)}%</span>
+                    <span style="padding: 8px 16px; background: ${riskBg}; color: ${riskTextColor}; border-radius: 6px; font-weight: 600;">
+                        ${data.risk_level}リスク
+                    </span>
+                </div>
+                <div style="background: #e1e8ed; height: 12px; border-radius: 6px; overflow: hidden;">
+                    <div style="background: ${riskColor}; height: 100%; width: ${Math.round(data.regret_score * 100)}%; border-radius: 6px; transition: width 0.3s;"></div>
+                </div>
+            </div>
+        `;
+
+        if (data.warnings && data.warnings.length > 0) {
+            html += `
+                <div style="margin-bottom: 20px;">
+                    <p style="font-weight: 600; margin: 0 0 12px 0; font-size: 14px; color: #92400e;">注意すべきポイント</p>
+                    <ul style="margin: 0; padding-left: 20px; color: #1a1a1a;">
+                        ${data.warnings.map(w => `<li style="margin-bottom: 8px; font-size: 14px;">${w}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        if (data.similar_cases && data.similar_cases.length > 0) {
+            html += `
+                <div>
+                    <p style="font-weight: 600; margin: 0 0 12px 0; font-size: 14px; color: #92400e;">過去の類似ケース</p>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        ${data.similar_cases.map(c => `
+                            <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #fde68a;">
+                                <div style="font-size: 13px; color: #5a6c7d; margin-bottom: 4px;">${c.date}</div>
+                                <div style="font-size: 14px; color: #1a1a1a; margin-bottom: 6px;">${c.decision_text}</div>
+                                <div style="font-size: 13px;">
+                                    <span style="color: #ef4444; font-weight: 500;">後悔度 ${c.regret_score}/5.0</span>
+                                    <span style="color: #5a6c7d; margin-left: 8px;">理由: ${c.reason}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        contentDiv.innerHTML = html;
+        resultDiv.style.display = 'block';
+        resultDiv.scrollIntoView({ behavior: 'smooth' });
+    })
+    .catch(error => {
+        alert('予測エラー: ' + error.message);
+    });
+});
+</script>
+{% endblock %}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../config/theme.dart';
 import '../services/supabase_service.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -10,64 +11,53 @@ class SettingsScreen extends StatelessWidget {
     final isAnonymous = user?.isAnonymous ?? true;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('設定')),
+      backgroundColor: AppTheme.bgColor,
+      appBar: AppBar(title: const Text('マイページ')),
       body: ListView(
+        padding: const EdgeInsets.all(16),
         children: [
-          const SizedBox(height: 8),
-          ListTile(
-            leading: CircleAvatar(
-              child: Icon(isAnonymous ? Icons.person_outline : Icons.person),
-            ),
-            title: Text(isAnonymous ? '匿名ユーザー' : (user?.email ?? '')),
-            subtitle: Text(isAnonymous ? 'メール登録でデータを保護' : 'ログイン済み'),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: AppTheme.cardDecoration(),
+            child: Row(children: [
+              CircleAvatar(
+                radius: 24,
+                backgroundColor: AppTheme.accentOrange.withValues(alpha: 0.1),
+                child: Icon(isAnonymous ? Icons.person_outline : Icons.person, color: AppTheme.accentOrange),
+              ),
+              const SizedBox(width: 14),
+              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                SelectableText(isAnonymous ? 'ゲストユーザー' : (user?.email ?? ''), style: const TextStyle(fontWeight: FontWeight.w600, color: AppTheme.textPrimary)),
+                SelectableText(isAnonymous ? 'ログインでデータを保護' : 'ログイン済み', style: TextStyle(fontSize: 12, color: AppTheme.textSecondary)),
+              ])),
+            ]),
           ),
-          const Divider(),
-          if (isAnonymous)
-            ListTile(
-              leading: const Icon(Icons.email),
-              title: const Text('メールアドレスで登録'),
-              subtitle: const Text('データをバックアップ'),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () {
-                // TODO: 登録画面に遷移
-              },
-            ),
-          ListTile(
-            leading: const Icon(Icons.notifications),
-            title: const Text('通知設定'),
-            subtitle: const Text('フォローアップ通知のタイミング'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              // TODO: 通知設定画面
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.info_outline),
-            title: const Text('RegretLensについて'),
-            subtitle: const Text('後悔予測AIアプリ v1.0.0'),
-            onTap: () {
-              showAboutDialog(
-                context: context,
-                applicationName: 'RegretLens',
-                applicationVersion: '1.0.0',
-                children: [
-                  const Text('後悔しない選択をAIがサポートするアプリです。'),
-                ],
-              );
-            },
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.logout, color: Colors.red),
-            title: const Text('サインアウト', style: TextStyle(color: Colors.red)),
-            onTap: () async {
-              await SupabaseService.signOut();
-              if (context.mounted) {
-                Navigator.of(context).popUntil((route) => route.isFirst);
-              }
-            },
-          ),
+          const SizedBox(height: 12),
+          _tile(context, Icons.notifications_outlined, '通知設定', 'フォローアップのタイミング', () {}),
+          _tile(context, Icons.info_outline, 'RegretLensについて', 'v1.0.0', () {
+            showAboutDialog(context: context, applicationName: 'RegretLens', applicationVersion: '1.0.0');
+          }),
+          const SizedBox(height: 12),
+          _tile(context, Icons.logout, 'サインアウト', null, () async {
+            await SupabaseService.signOut();
+            if (context.mounted) Navigator.of(context).popUntil((route) => route.isFirst);
+          }, danger: true),
         ],
+      ),
+    );
+  }
+
+  Widget _tile(BuildContext context, IconData icon, String title, String? subtitle, VoidCallback onTap, {bool danger = false}) {
+    final color = danger ? AppTheme.dangerColor : AppTheme.textPrimary;
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: AppTheme.cardDecoration(),
+      child: ListTile(
+        leading: Icon(icon, color: danger ? AppTheme.dangerColor : AppTheme.accentOrange),
+        title: SelectableText(title, style: TextStyle(color: color, fontWeight: FontWeight.w500)),
+        subtitle: subtitle != null ? SelectableText(subtitle, style: TextStyle(fontSize: 12, color: AppTheme.textSecondary)) : null,
+        trailing: danger ? null : Icon(Icons.chevron_right, color: Colors.grey.shade400),
+        onTap: onTap,
       ),
     );
   }

@@ -1,0 +1,6301 @@
+{
+  "users": [
+    {
+      "user_id": 0,
+      "user_type": "mood_dependent",
+      "stress_sensitivity": 0.4630214825372896,
+      "price_sensitivity": 0.3835108155281388,
+      "mood_sensitivity": 0.8849035181498266,
+      "baseline_regret": 0.2844776132319904
+    },
+    {
+      "user_id": 1,
+      "user_type": "price_sensitive",
+      "stress_sensitivity": 0.45491958831073387,
+      "price_sensitivity": 0.914133517373628,
+      "mood_sensitivity": 0.3085422679434291,
+      "baseline_regret": 0.21715216562251033
+    },
+    {
+      "user_id": 2,
+      "user_type": "stress_sensitive",
+      "stress_sensitivity": 0.9195363169872126,
+      "price_sensitivity": 0.5027960713116852,
+      "mood_sensitivity": 0.38978452230291055,
+      "baseline_regret": 0.2730740267909034
+    },
+    {
+      "user_id": 3,
+      "user_type": "random",
+      "stress_sensitivity": 0.472844482240361,
+      "price_sensitivity": 0.3696861052795322,
+      "mood_sensitivity": 0.3683774741110008,
+      "baseline_regret": 0.46552644952412825
+    },
+    {
+      "user_id": 4,
+      "user_type": "price_sensitive",
+      "stress_sensitivity": 0.34437618730442543,
+      "price_sensitivity": 0.8456596713999933,
+      "mood_sensitivity": 0.5422480086151129,
+      "baseline_regret": 0.22984745755400832
+    },
+    {
+      "user_id": 5,
+      "user_type": "mood_dependent",
+      "stress_sensitivity": 0.32512197716891467,
+      "price_sensitivity": 0.40005188774370026,
+      "mood_sensitivity": 0.9718711490177294,
+      "baseline_regret": 0.21056868353190847
+    },
+    {
+      "user_id": 6,
+      "user_type": "random",
+      "stress_sensitivity": 0.3034259190993516,
+      "price_sensitivity": 0.6817226692326939,
+      "mood_sensitivity": 0.47982601374167366,
+      "baseline_regret": 0.4220437543454232
+    },
+    {
+      "user_id": 7,
+      "user_type": "price_sensitive",
+      "stress_sensitivity": 0.34881148783354043,
+      "price_sensitivity": 0.95095617553027,
+      "mood_sensitivity": 0.46902055459433317,
+      "baseline_regret": 0.22252644143687586
+    },
+    {
+      "user_id": 8,
+      "user_type": "stress_sensitive",
+      "stress_sensitivity": 0.8467222271967212,
+      "price_sensitivity": 0.31031628663097294,
+      "mood_sensitivity": 0.47402668210531657,
+      "baseline_regret": 0.2129114286579739
+    },
+    {
+      "user_id": 9,
+      "user_type": "stress_sensitive",
+      "stress_sensitivity": 0.92229210233,
+      "price_sensitivity": 0.44742792136569,
+      "mood_sensitivity": 0.5097850788437638,
+      "baseline_regret": 0.21945692482060009
+    }
+  ],
+  "decisions": [
+    {
+      "id": "u0_d0",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 4.1,
+        "stress_level": 2.8,
+        "hunger_level": 4.1,
+        "budget_remaining": 9960,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 620,
+        "taste_expectation": 3.3,
+        "health_value": 2.6,
+        "time_required": 61
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u0_d1",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 3.9,
+        "stress_level": 2.4,
+        "hunger_level": 4.3,
+        "budget_remaining": 9111,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 538,
+        "taste_expectation": 3.7,
+        "health_value": 2.7,
+        "time_required": 38
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u0_d2",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "9:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 4.4,
+        "stress_level": 1.6,
+        "hunger_level": 3.1,
+        "budget_remaining": 9084,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 832,
+        "taste_expectation": 3.5,
+        "health_value": 2.5,
+        "time_required": 59
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u0_d3",
+      "user_id": 0,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "8:00",
+        "day_of_week": "木曜日",
+        "weather": "雪",
+        "mood": 1.3,
+        "stress_level": 3.5,
+        "hunger_level": 2.4,
+        "budget_remaining": 4446,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 724,
+        "taste_expectation": 3.1,
+        "health_value": 4.8,
+        "time_required": 109
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u0_d4",
+      "user_id": 0,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 3.0,
+        "stress_level": 4.0,
+        "hunger_level": 3.8,
+        "budget_remaining": 6669,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1346,
+        "taste_expectation": 3.8,
+        "health_value": 2.8,
+        "time_required": 44
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u0_d5",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 1.0,
+        "stress_level": 3.8,
+        "hunger_level": 4.5,
+        "budget_remaining": 2858,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 681,
+        "taste_expectation": 3.6,
+        "health_value": 2.9,
+        "time_required": 56
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u0_d6",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "10:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.7,
+        "stress_level": 1.3,
+        "hunger_level": 2.7,
+        "budget_remaining": 2274,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 2.8,
+        "health_value": 4.6,
+        "time_required": 50
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u0_d7",
+      "user_id": 0,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 2.8,
+        "hunger_level": 5.0,
+        "budget_remaining": 7087,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1811,
+        "taste_expectation": 3.2,
+        "health_value": 3.3,
+        "time_required": 97
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u0_d8",
+      "user_id": 0,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 2.1,
+        "stress_level": 3.3,
+        "hunger_level": 5.0,
+        "budget_remaining": 9992,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 891,
+        "taste_expectation": 4.1,
+        "health_value": 3.1,
+        "time_required": 29
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u0_d9",
+      "user_id": 0,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 2.2,
+        "stress_level": 2.3,
+        "hunger_level": 5.0,
+        "budget_remaining": 7119,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 899,
+        "taste_expectation": 1.8,
+        "health_value": 3.1,
+        "time_required": 58
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u0_d10",
+      "user_id": 0,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "月曜日",
+        "weather": "雪",
+        "mood": 3.2,
+        "stress_level": 4.0,
+        "hunger_level": 2.9,
+        "budget_remaining": 6135,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1088,
+        "taste_expectation": 3.6,
+        "health_value": 3.5,
+        "time_required": 52
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u0_d11",
+      "user_id": 0,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 2.8,
+        "stress_level": 1.3,
+        "hunger_level": 4.2,
+        "budget_remaining": 4909,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1248,
+        "taste_expectation": 3.5,
+        "health_value": 2.4,
+        "time_required": 70
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u0_d12",
+      "user_id": 0,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "水曜日",
+        "weather": "雪",
+        "mood": 2.4,
+        "stress_level": 4.1,
+        "hunger_level": 2.9,
+        "budget_remaining": 1011,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2476,
+        "taste_expectation": 5.0,
+        "health_value": 2.5,
+        "time_required": 106
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u0_d13",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.0,
+        "stress_level": 4.7,
+        "hunger_level": 3.6,
+        "budget_remaining": 2488,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 645,
+        "taste_expectation": 3.3,
+        "health_value": 3.3,
+        "time_required": 23
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u0_d14",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 3.5,
+        "stress_level": 3.6,
+        "hunger_level": 4.4,
+        "budget_remaining": 9854,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1238,
+        "taste_expectation": 3.9,
+        "health_value": 3.1,
+        "time_required": 36
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u0_d15",
+      "user_id": 0,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 2.9,
+        "stress_level": 4.5,
+        "hunger_level": 4.2,
+        "budget_remaining": 8951,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 415,
+        "taste_expectation": 4.1,
+        "health_value": 3.3,
+        "time_required": 31
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u0_d16",
+      "user_id": 0,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 1.3,
+        "hunger_level": 4.3,
+        "budget_remaining": 5433,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 668,
+        "taste_expectation": 3.9,
+        "health_value": 3.7,
+        "time_required": 110
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u0_d17",
+      "user_id": 0,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 3.1,
+        "hunger_level": 2.9,
+        "budget_remaining": 4129,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1281,
+        "taste_expectation": 4.5,
+        "health_value": 2.6,
+        "time_required": 66
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u0_d18",
+      "user_id": 0,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 3.1,
+        "stress_level": 2.8,
+        "hunger_level": 4.9,
+        "budget_remaining": 2477,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2384,
+        "taste_expectation": 3.8,
+        "health_value": 3.7,
+        "time_required": 67
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u0_d19",
+      "user_id": 0,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 3.2,
+        "stress_level": 2.9,
+        "hunger_level": 4.3,
+        "budget_remaining": 1006,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1689,
+        "taste_expectation": 5.0,
+        "health_value": 3.0,
+        "time_required": 76
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u1_d0",
+      "user_id": 1,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "15:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 3.9,
+        "stress_level": 2.1,
+        "hunger_level": 3.9,
+        "budget_remaining": 9931,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 4975,
+        "taste_expectation": 5.0,
+        "health_value": 3.7,
+        "time_required": 63
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u1_d1",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "14:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 5.0,
+        "stress_level": 3.0,
+        "hunger_level": 1.0,
+        "budget_remaining": 8464,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 680,
+        "taste_expectation": 4.5,
+        "health_value": 3.3,
+        "time_required": 37
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u1_d2",
+      "user_id": 1,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 2.7,
+        "stress_level": 4.2,
+        "hunger_level": 3.8,
+        "budget_remaining": 9971,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1681,
+        "taste_expectation": 5.0,
+        "health_value": 2.9,
+        "time_required": 90
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u1_d3",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "木曜日",
+        "weather": "雨",
+        "mood": 2.7,
+        "stress_level": 3.0,
+        "hunger_level": 4.5,
+        "budget_remaining": 6757,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 959,
+        "taste_expectation": 4.0,
+        "health_value": 4.8,
+        "time_required": 42
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u1_d4",
+      "user_id": 1,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 3.6,
+        "stress_level": 2.2,
+        "hunger_level": 5.0,
+        "budget_remaining": 4797,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1598,
+        "taste_expectation": 4.8,
+        "health_value": 2.6,
+        "time_required": 93
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u1_d5",
+      "user_id": 1,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 1.0,
+        "stress_level": 4.9,
+        "hunger_level": 5.0,
+        "budget_remaining": 1561,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1250,
+        "taste_expectation": 4.4,
+        "health_value": 4.8,
+        "time_required": 68
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u1_d6",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "木曜日",
+        "weather": "雪",
+        "mood": 2.2,
+        "stress_level": 3.3,
+        "hunger_level": 5.0,
+        "budget_remaining": 3532,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 552,
+        "taste_expectation": 3.8,
+        "health_value": 3.9,
+        "time_required": 22
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u1_d7",
+      "user_id": 1,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 2.0,
+        "stress_level": 1.1,
+        "hunger_level": 3.3,
+        "budget_remaining": 9280,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 3349,
+        "taste_expectation": 3.3,
+        "health_value": 1.9,
+        "time_required": 49
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u1_d8",
+      "user_id": 1,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 4.1,
+        "stress_level": 3.3,
+        "hunger_level": 4.4,
+        "budget_remaining": 9240,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2405,
+        "taste_expectation": 3.6,
+        "health_value": 3.9,
+        "time_required": 22
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u1_d9",
+      "user_id": 1,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 4.0,
+        "stress_level": 2.1,
+        "hunger_level": 3.3,
+        "budget_remaining": 7634,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 2418,
+        "taste_expectation": 4.9,
+        "health_value": 1.6,
+        "time_required": 137
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u1_d10",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 2.8,
+        "hunger_level": 4.4,
+        "budget_remaining": 4788,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 874,
+        "taste_expectation": 5.0,
+        "health_value": 2.4,
+        "time_required": 10
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u1_d11",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 1.7,
+        "stress_level": 1.8,
+        "hunger_level": 2.8,
+        "budget_remaining": 5008,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 2.4,
+        "health_value": 4.5,
+        "time_required": 42
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u1_d12",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 3.0,
+        "stress_level": 2.1,
+        "hunger_level": 4.6,
+        "budget_remaining": 1001,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 568,
+        "taste_expectation": 2.9,
+        "health_value": 2.9,
+        "time_required": 61
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u1_d13",
+      "user_id": 1,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 3.8,
+        "stress_level": 4.9,
+        "hunger_level": 3.7,
+        "budget_remaining": 3528,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1437,
+        "taste_expectation": 2.7,
+        "health_value": 5.0,
+        "time_required": 88
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u1_d14",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 2.3,
+        "stress_level": 3.2,
+        "hunger_level": 5.0,
+        "budget_remaining": 9062,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 537,
+        "taste_expectation": 3.1,
+        "health_value": 3.4,
+        "time_required": 21
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u1_d15",
+      "user_id": 1,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 2.2,
+        "stress_level": 3.1,
+        "hunger_level": 4.1,
+        "budget_remaining": 9028,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 663,
+        "taste_expectation": 4.0,
+        "health_value": 4.2,
+        "time_required": 116
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u1_d16",
+      "user_id": 1,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.3,
+        "stress_level": 4.5,
+        "hunger_level": 3.2,
+        "budget_remaining": 4675,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 800,
+        "taste_expectation": 4.2,
+        "health_value": 3.7,
+        "time_required": 153
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u1_d17",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "23:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.2,
+        "stress_level": 3.3,
+        "hunger_level": 3.0,
+        "budget_remaining": 5516,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1227,
+        "taste_expectation": 2.6,
+        "health_value": 1.6,
+        "time_required": 27
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u1_d18",
+      "user_id": 1,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 2.2,
+        "stress_level": 4.9,
+        "hunger_level": 5.0,
+        "budget_remaining": 1944,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 939,
+        "taste_expectation": 3.6,
+        "health_value": 1.8,
+        "time_required": 81
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u1_d19",
+      "user_id": 1,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 4.0,
+        "stress_level": 2.6,
+        "hunger_level": 3.2,
+        "budget_remaining": 1912,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1631,
+        "taste_expectation": 4.0,
+        "health_value": 4.0,
+        "time_required": 40
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u2_d0",
+      "user_id": 2,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "23:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 3.6,
+        "stress_level": 3.7,
+        "hunger_level": 1.8,
+        "budget_remaining": 7071,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1513,
+        "taste_expectation": 3.6,
+        "health_value": 2.6,
+        "time_required": 50
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u2_d1",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 3.1,
+        "stress_level": 3.4,
+        "hunger_level": 3.1,
+        "budget_remaining": 8430,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 823,
+        "taste_expectation": 2.5,
+        "health_value": 1.3,
+        "time_required": 41
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u2_d2",
+      "user_id": 2,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "21:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 3.4,
+        "stress_level": 3.7,
+        "hunger_level": 2.4,
+        "budget_remaining": 9244,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2554,
+        "taste_expectation": 4.9,
+        "health_value": 2.4,
+        "time_required": 58
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u2_d3",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 2.1,
+        "stress_level": 4.9,
+        "hunger_level": 3.4,
+        "budget_remaining": 6203,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1000,
+        "taste_expectation": 4.8,
+        "health_value": 3.0,
+        "time_required": 10
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u2_d4",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "火曜日",
+        "weather": "雨",
+        "mood": 1.7,
+        "stress_level": 4.0,
+        "hunger_level": 5.0,
+        "budget_remaining": 5389,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 856,
+        "taste_expectation": 3.5,
+        "health_value": 3.3,
+        "time_required": 33
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u2_d5",
+      "user_id": 2,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 2.8,
+        "stress_level": 4.7,
+        "hunger_level": 3.7,
+        "budget_remaining": 2294,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 2188,
+        "taste_expectation": 5.0,
+        "health_value": 2.3,
+        "time_required": 113
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u2_d6",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 1.6,
+        "stress_level": 3.2,
+        "hunger_level": 3.9,
+        "budget_remaining": 1247,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 666,
+        "taste_expectation": 4.2,
+        "health_value": 4.1,
+        "time_required": 38
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u2_d7",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "8:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 4.4,
+        "stress_level": 4.5,
+        "hunger_level": 2.6,
+        "budget_remaining": 8255,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1176,
+        "taste_expectation": 4.5,
+        "health_value": 2.5,
+        "time_required": 46
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u2_d8",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "土曜日",
+        "weather": "雨",
+        "mood": 3.1,
+        "stress_level": 3.5,
+        "hunger_level": 4.6,
+        "budget_remaining": 8072,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 958,
+        "taste_expectation": 3.1,
+        "health_value": 2.6,
+        "time_required": 16
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u2_d9",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "21:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 4.2,
+        "stress_level": 3.7,
+        "hunger_level": 1.0,
+        "budget_remaining": 8403,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 977,
+        "taste_expectation": 3.8,
+        "health_value": 2.9,
+        "time_required": 70
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u2_d10",
+      "user_id": 2,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 2.0,
+        "stress_level": 5.0,
+        "hunger_level": 4.1,
+        "budget_remaining": 6241,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1675,
+        "taste_expectation": 4.6,
+        "health_value": 3.8,
+        "time_required": 148
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u2_d11",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 2.2,
+        "stress_level": 3.7,
+        "hunger_level": 4.2,
+        "budget_remaining": 5639,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1202,
+        "taste_expectation": 4.2,
+        "health_value": 3.7,
+        "time_required": 43
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u2_d12",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 3.6,
+        "stress_level": 2.5,
+        "hunger_level": 5.0,
+        "budget_remaining": 3401,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 605,
+        "taste_expectation": 3.0,
+        "health_value": 3.8,
+        "time_required": 30
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u2_d13",
+      "user_id": 2,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 3.2,
+        "stress_level": 5.0,
+        "hunger_level": 3.7,
+        "budget_remaining": 2944,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2634,
+        "taste_expectation": 2.3,
+        "health_value": 2.9,
+        "time_required": 45
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u2_d14",
+      "user_id": 2,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 2.8,
+        "stress_level": 3.4,
+        "hunger_level": 3.4,
+        "budget_remaining": 8141,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1371,
+        "taste_expectation": 3.3,
+        "health_value": 3.2,
+        "time_required": 106
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u2_d15",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 3.9,
+        "stress_level": 3.6,
+        "hunger_level": 5.0,
+        "budget_remaining": 8900,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 814,
+        "taste_expectation": 3.2,
+        "health_value": 3.5,
+        "time_required": 44
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u2_d16",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "23:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 1.2,
+        "stress_level": 2.2,
+        "hunger_level": 3.4,
+        "budget_remaining": 4447,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 923,
+        "taste_expectation": 3.7,
+        "health_value": 2.1,
+        "time_required": 39
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u2_d17",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 2.7,
+        "stress_level": 4.6,
+        "hunger_level": 4.4,
+        "budget_remaining": 4899,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1099,
+        "taste_expectation": 3.3,
+        "health_value": 3.1,
+        "time_required": 60
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u2_d18",
+      "user_id": 2,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 2.1,
+        "stress_level": 2.1,
+        "hunger_level": 4.3,
+        "budget_remaining": 3778,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1273,
+        "taste_expectation": 3.9,
+        "health_value": 3.7,
+        "time_required": 57
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u2_d19",
+      "user_id": 2,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 4.2,
+        "stress_level": 5.0,
+        "hunger_level": 5.0,
+        "budget_remaining": 2047,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 725,
+        "taste_expectation": 3.9,
+        "health_value": 4.1,
+        "time_required": 49
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u3_d0",
+      "user_id": 3,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "金曜日",
+        "weather": "雨",
+        "mood": 4.0,
+        "stress_level": 1.8,
+        "hunger_level": 4.8,
+        "budget_remaining": 7925,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 608,
+        "taste_expectation": 2.5,
+        "health_value": 1.6,
+        "time_required": 81
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u3_d1",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 3.0,
+        "stress_level": 2.6,
+        "hunger_level": 3.6,
+        "budget_remaining": 7239,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 721,
+        "taste_expectation": 2.8,
+        "health_value": 3.1,
+        "time_required": 30
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u3_d2",
+      "user_id": 3,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 3.6,
+        "stress_level": 3.1,
+        "hunger_level": 4.6,
+        "budget_remaining": 8243,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1265,
+        "taste_expectation": 4.3,
+        "health_value": 3.3,
+        "time_required": 43
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u3_d3",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.1,
+        "stress_level": 3.1,
+        "hunger_level": 3.6,
+        "budget_remaining": 4873,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 662,
+        "taste_expectation": 3.9,
+        "health_value": 2.2,
+        "time_required": 42
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u3_d4",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 1.3,
+        "stress_level": 4.6,
+        "hunger_level": 3.6,
+        "budget_remaining": 6795,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 952,
+        "taste_expectation": 4.3,
+        "health_value": 2.1,
+        "time_required": 62
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u3_d5",
+      "user_id": 3,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "15:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 3.8,
+        "stress_level": 2.8,
+        "hunger_level": 3.2,
+        "budget_remaining": 2742,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 649,
+        "taste_expectation": 3.4,
+        "health_value": 1.5,
+        "time_required": 80
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u3_d6",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "21:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 1.5,
+        "stress_level": 5.0,
+        "hunger_level": 3.7,
+        "budget_remaining": 1984,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 937,
+        "taste_expectation": 2.5,
+        "health_value": 2.9,
+        "time_required": 14
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u3_d7",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "月曜日",
+        "weather": "雨",
+        "mood": 2.7,
+        "stress_level": 5.0,
+        "hunger_level": 4.1,
+        "budget_remaining": 8485,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1333,
+        "taste_expectation": 4.9,
+        "health_value": 2.6,
+        "time_required": 30
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u3_d8",
+      "user_id": 3,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "15:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 2.4,
+        "stress_level": 1.8,
+        "hunger_level": 4.1,
+        "budget_remaining": 8927,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1947,
+        "taste_expectation": 4.2,
+        "health_value": 4.7,
+        "time_required": 85
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u3_d9",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "8:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 2.3,
+        "stress_level": 3.2,
+        "hunger_level": 2.5,
+        "budget_remaining": 9673,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 719,
+        "taste_expectation": 2.9,
+        "health_value": 2.7,
+        "time_required": 31
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u3_d10",
+      "user_id": 3,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 2.5,
+        "stress_level": 1.9,
+        "hunger_level": 4.4,
+        "budget_remaining": 5528,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1443,
+        "taste_expectation": 2.2,
+        "health_value": 3.1,
+        "time_required": 144
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u3_d11",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 1.9,
+        "stress_level": 5.0,
+        "hunger_level": 3.4,
+        "budget_remaining": 4804,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 424,
+        "taste_expectation": 3.8,
+        "health_value": 3.8,
+        "time_required": 51
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u3_d12",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "15:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 2.2,
+        "stress_level": 3.4,
+        "hunger_level": 4.7,
+        "budget_remaining": 1073,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 495,
+        "taste_expectation": 3.4,
+        "health_value": 3.8,
+        "time_required": 30
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u3_d13",
+      "user_id": 3,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.1,
+        "stress_level": 3.4,
+        "hunger_level": 2.9,
+        "budget_remaining": 2078,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1106,
+        "taste_expectation": 3.0,
+        "health_value": 1.8,
+        "time_required": 141
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u3_d14",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 4.3,
+        "stress_level": 2.5,
+        "hunger_level": 4.5,
+        "budget_remaining": 7842,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1238,
+        "taste_expectation": 3.7,
+        "health_value": 1.4,
+        "time_required": 39
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u3_d15",
+      "user_id": 3,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 2.8,
+        "stress_level": 3.8,
+        "hunger_level": 3.2,
+        "budget_remaining": 9723,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1149,
+        "taste_expectation": 3.2,
+        "health_value": 1.0,
+        "time_required": 44
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u3_d16",
+      "user_id": 3,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.7,
+        "stress_level": 2.4,
+        "hunger_level": 4.7,
+        "budget_remaining": 5679,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1467,
+        "taste_expectation": 4.4,
+        "health_value": 3.9,
+        "time_required": 107
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u3_d17",
+      "user_id": 3,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 4.1,
+        "stress_level": 4.9,
+        "hunger_level": 4.2,
+        "budget_remaining": 6869,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1949,
+        "taste_expectation": 3.4,
+        "health_value": 1.0,
+        "time_required": 37
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u3_d18",
+      "user_id": 3,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 1.4,
+        "stress_level": 3.7,
+        "hunger_level": 2.1,
+        "budget_remaining": 2711,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 2770,
+        "taste_expectation": 4.9,
+        "health_value": 3.0,
+        "time_required": 42
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u3_d19",
+      "user_id": 3,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 2.9,
+        "stress_level": 5.0,
+        "hunger_level": 4.4,
+        "budget_remaining": 2633,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 629,
+        "taste_expectation": 3.8,
+        "health_value": 2.6,
+        "time_required": 35
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u4_d0",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "21:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 4.1,
+        "stress_level": 3.3,
+        "hunger_level": 2.5,
+        "budget_remaining": 7337,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 3.1,
+        "health_value": 1.8,
+        "time_required": 32
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u4_d1",
+      "user_id": 4,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "17:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 3.3,
+        "stress_level": 2.5,
+        "hunger_level": 2.3,
+        "budget_remaining": 8548,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1104,
+        "taste_expectation": 3.0,
+        "health_value": 2.8,
+        "time_required": 34
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u4_d2",
+      "user_id": 4,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "9:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 4.6,
+        "stress_level": 4.4,
+        "hunger_level": 2.5,
+        "budget_remaining": 8881,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1344,
+        "taste_expectation": 1.5,
+        "health_value": 3.1,
+        "time_required": 77
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u4_d3",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.4,
+        "stress_level": 4.0,
+        "hunger_level": 4.5,
+        "budget_remaining": 5184,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 751,
+        "taste_expectation": 4.6,
+        "health_value": 3.7,
+        "time_required": 36
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u4_d4",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 1.4,
+        "stress_level": 3.6,
+        "hunger_level": 3.9,
+        "budget_remaining": 6127,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 963,
+        "taste_expectation": 4.6,
+        "health_value": 3.6,
+        "time_required": 31
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u4_d5",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 3.8,
+        "stress_level": 3.1,
+        "hunger_level": 5.0,
+        "budget_remaining": 3471,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 692,
+        "taste_expectation": 3.1,
+        "health_value": 2.7,
+        "time_required": 50
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u4_d6",
+      "user_id": 4,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.1,
+        "stress_level": 2.3,
+        "hunger_level": 4.3,
+        "budget_remaining": 2192,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1859,
+        "taste_expectation": 3.5,
+        "health_value": 4.0,
+        "time_required": 53
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u4_d7",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "月曜日",
+        "weather": "雨",
+        "mood": 1.0,
+        "stress_level": 3.1,
+        "hunger_level": 4.6,
+        "budget_remaining": 9164,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1046,
+        "taste_expectation": 4.6,
+        "health_value": 3.7,
+        "time_required": 47
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u4_d8",
+      "user_id": 4,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 4.1,
+        "stress_level": 2.6,
+        "hunger_level": 3.3,
+        "budget_remaining": 8424,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1356,
+        "taste_expectation": 5.0,
+        "health_value": 3.6,
+        "time_required": 95
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u4_d9",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 2.5,
+        "stress_level": 3.5,
+        "hunger_level": 4.8,
+        "budget_remaining": 7548,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 667,
+        "taste_expectation": 2.7,
+        "health_value": 4.0,
+        "time_required": 10
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u4_d10",
+      "user_id": 4,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "8:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 2.2,
+        "stress_level": 3.1,
+        "hunger_level": 4.3,
+        "budget_remaining": 7000,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1374,
+        "taste_expectation": 2.9,
+        "health_value": 3.2,
+        "time_required": 139
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u4_d11",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 3.1,
+        "stress_level": 5.0,
+        "hunger_level": 3.5,
+        "budget_remaining": 4335,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 939,
+        "taste_expectation": 3.7,
+        "health_value": 2.6,
+        "time_required": 21
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u4_d12",
+      "user_id": 4,
+      "category": "仕事",
+      "decision_text": "仕事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 3.9,
+        "stress_level": 1.6,
+        "hunger_level": 4.3,
+        "budget_remaining": 1488,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1136,
+        "taste_expectation": 4.0,
+        "health_value": 2.9,
+        "time_required": 69
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u4_d13",
+      "user_id": 4,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 3.1,
+        "stress_level": 4.0,
+        "hunger_level": 2.5,
+        "budget_remaining": 2519,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 725,
+        "taste_expectation": 3.2,
+        "health_value": 4.1,
+        "time_required": 26
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u4_d14",
+      "user_id": 4,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 2.1,
+        "stress_level": 1.0,
+        "hunger_level": 3.0,
+        "budget_remaining": 7768,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2760,
+        "taste_expectation": 3.4,
+        "health_value": 3.0,
+        "time_required": 19
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u4_d15",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 2.0,
+        "stress_level": 4.7,
+        "hunger_level": 3.6,
+        "budget_remaining": 8192,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 3.3,
+        "health_value": 3.5,
+        "time_required": 60
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u4_d16",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.6,
+        "stress_level": 4.6,
+        "hunger_level": 4.5,
+        "budget_remaining": 4692,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 677,
+        "taste_expectation": 3.4,
+        "health_value": 2.7,
+        "time_required": 13
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u4_d17",
+      "user_id": 4,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.0,
+        "stress_level": 2.8,
+        "hunger_level": 2.7,
+        "budget_remaining": 4119,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2184,
+        "taste_expectation": 3.2,
+        "health_value": 3.0,
+        "time_required": 53
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u4_d18",
+      "user_id": 4,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 2.1,
+        "stress_level": 5.0,
+        "hunger_level": 4.1,
+        "budget_remaining": 1526,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 427,
+        "taste_expectation": 4.6,
+        "health_value": 3.5,
+        "time_required": 45
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u4_d19",
+      "user_id": 4,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 1.6,
+        "stress_level": 2.6,
+        "hunger_level": 2.8,
+        "budget_remaining": 2609,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2478,
+        "taste_expectation": 5.0,
+        "health_value": 3.2,
+        "time_required": 131
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u5_d0",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 1.4,
+        "stress_level": 5.0,
+        "hunger_level": 4.7,
+        "budget_remaining": 8305,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1481,
+        "taste_expectation": 4.3,
+        "health_value": 4.5,
+        "time_required": 72
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u5_d1",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 1.0,
+        "stress_level": 2.6,
+        "hunger_level": 3.1,
+        "budget_remaining": 7768,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1017,
+        "taste_expectation": 2.5,
+        "health_value": 3.4,
+        "time_required": 30
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u5_d2",
+      "user_id": 5,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "日曜日",
+        "weather": "雨",
+        "mood": 1.2,
+        "stress_level": 3.9,
+        "hunger_level": 4.1,
+        "budget_remaining": 9190,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 659,
+        "taste_expectation": 3.8,
+        "health_value": 5.0,
+        "time_required": 75
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u5_d3",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 2.1,
+        "stress_level": 2.5,
+        "hunger_level": 3.8,
+        "budget_remaining": 6204,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 711,
+        "taste_expectation": 3.8,
+        "health_value": 2.4,
+        "time_required": 82
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u5_d4",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "火曜日",
+        "weather": "雨",
+        "mood": 1.0,
+        "stress_level": 3.7,
+        "hunger_level": 4.3,
+        "budget_remaining": 6796,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1866,
+        "taste_expectation": 4.0,
+        "health_value": 1.1,
+        "time_required": 72
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u5_d5",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "土曜日",
+        "weather": "雨",
+        "mood": 2.5,
+        "stress_level": 3.0,
+        "hunger_level": 4.2,
+        "budget_remaining": 1718,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1999,
+        "taste_expectation": 5.0,
+        "health_value": 4.4,
+        "time_required": 71
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u5_d6",
+      "user_id": 5,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "21:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 1.4,
+        "stress_level": 3.1,
+        "hunger_level": 2.2,
+        "budget_remaining": 3868,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1337,
+        "taste_expectation": 3.1,
+        "health_value": 4.2,
+        "time_required": 143
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u5_d7",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 4.0,
+        "stress_level": 2.3,
+        "hunger_level": 3.6,
+        "budget_remaining": 7645,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1209,
+        "taste_expectation": 3.9,
+        "health_value": 3.0,
+        "time_required": 10
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u5_d8",
+      "user_id": 5,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 2.6,
+        "stress_level": 4.8,
+        "hunger_level": 4.5,
+        "budget_remaining": 9978,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1223,
+        "taste_expectation": 2.9,
+        "health_value": 2.2,
+        "time_required": 104
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u5_d9",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 5.0,
+        "stress_level": 1.3,
+        "hunger_level": 4.6,
+        "budget_remaining": 9972,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 830,
+        "taste_expectation": 3.5,
+        "health_value": 1.0,
+        "time_required": 50
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u5_d10",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 1.3,
+        "stress_level": 3.1,
+        "hunger_level": 2.9,
+        "budget_remaining": 6359,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1665,
+        "taste_expectation": 5.0,
+        "health_value": 2.8,
+        "time_required": 82
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u5_d11",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 3.6,
+        "stress_level": 2.5,
+        "hunger_level": 2.0,
+        "budget_remaining": 4712,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 896,
+        "taste_expectation": 4.8,
+        "health_value": 3.2,
+        "time_required": 27
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u5_d12",
+      "user_id": 5,
+      "category": "仕事",
+      "decision_text": "仕事の選択",
+      "context": {
+        "time_of_day": "10:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 3.3,
+        "stress_level": 2.6,
+        "hunger_level": 3.1,
+        "budget_remaining": 2535,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1670,
+        "taste_expectation": 4.4,
+        "health_value": 3.0,
+        "time_required": 85
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u5_d13",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 3.6,
+        "stress_level": 3.5,
+        "hunger_level": 4.1,
+        "budget_remaining": 2711,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1075,
+        "taste_expectation": 3.1,
+        "health_value": 4.0,
+        "time_required": 10
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u5_d14",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "金曜日",
+        "weather": "雨",
+        "mood": 3.4,
+        "stress_level": 3.0,
+        "hunger_level": 2.4,
+        "budget_remaining": 8893,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 804,
+        "taste_expectation": 4.7,
+        "health_value": 2.7,
+        "time_required": 30
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u5_d15",
+      "user_id": 5,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 1.9,
+        "stress_level": 2.7,
+        "hunger_level": 3.0,
+        "budget_remaining": 9403,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1997,
+        "taste_expectation": 4.5,
+        "health_value": 2.6,
+        "time_required": 47
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u5_d16",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "日曜日",
+        "weather": "雨",
+        "mood": 2.3,
+        "stress_level": 3.9,
+        "hunger_level": 3.5,
+        "budget_remaining": 4797,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 2.9,
+        "health_value": 3.1,
+        "time_required": 34
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u5_d17",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 2.5,
+        "stress_level": 2.6,
+        "hunger_level": 4.4,
+        "budget_remaining": 5682,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1112,
+        "taste_expectation": 2.9,
+        "health_value": 4.2,
+        "time_required": 34
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u5_d18",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 5.0,
+        "stress_level": 4.5,
+        "hunger_level": 4.2,
+        "budget_remaining": 3535,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 878,
+        "taste_expectation": 3.8,
+        "health_value": 3.3,
+        "time_required": 51
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u5_d19",
+      "user_id": 5,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 2.1,
+        "stress_level": 3.8,
+        "hunger_level": 2.3,
+        "budget_remaining": 2953,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 543,
+        "taste_expectation": 3.1,
+        "health_value": 2.7,
+        "time_required": 49
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u6_d0",
+      "user_id": 6,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "10:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 2.0,
+        "stress_level": 3.6,
+        "hunger_level": 4.2,
+        "budget_remaining": 7569,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1339,
+        "taste_expectation": 3.3,
+        "health_value": 3.9,
+        "time_required": 90
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u6_d1",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "火曜日",
+        "weather": "雨",
+        "mood": 1.9,
+        "stress_level": 3.3,
+        "hunger_level": 2.8,
+        "budget_remaining": 9760,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1156,
+        "taste_expectation": 3.8,
+        "health_value": 2.4,
+        "time_required": 26
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u6_d2",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 2.2,
+        "stress_level": 4.6,
+        "hunger_level": 3.5,
+        "budget_remaining": 8926,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 679,
+        "taste_expectation": 3.7,
+        "health_value": 1.6,
+        "time_required": 32
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u6_d3",
+      "user_id": 6,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "木曜日",
+        "weather": "雨",
+        "mood": 1.4,
+        "stress_level": 3.1,
+        "hunger_level": 4.6,
+        "budget_remaining": 4177,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1459,
+        "taste_expectation": 3.0,
+        "health_value": 1.5,
+        "time_required": 126
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u6_d4",
+      "user_id": 6,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 1.7,
+        "stress_level": 3.2,
+        "hunger_level": 4.3,
+        "budget_remaining": 5477,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1694,
+        "taste_expectation": 3.4,
+        "health_value": 4.1,
+        "time_required": 73
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u6_d5",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 4.0,
+        "stress_level": 1.0,
+        "hunger_level": 3.9,
+        "budget_remaining": 2242,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1183,
+        "taste_expectation": 4.6,
+        "health_value": 3.1,
+        "time_required": 45
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u6_d6",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.0,
+        "stress_level": 4.0,
+        "hunger_level": 5.0,
+        "budget_remaining": 3681,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 628,
+        "taste_expectation": 3.3,
+        "health_value": 4.5,
+        "time_required": 50
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u6_d7",
+      "user_id": 6,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "月曜日",
+        "weather": "雨",
+        "mood": 2.1,
+        "stress_level": 4.0,
+        "hunger_level": 5.0,
+        "budget_remaining": 8240,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1262,
+        "taste_expectation": 3.3,
+        "health_value": 4.3,
+        "time_required": 56
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u6_d8",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "土曜日",
+        "weather": "雪",
+        "mood": 3.9,
+        "stress_level": 2.9,
+        "hunger_level": 3.5,
+        "budget_remaining": 7325,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 877,
+        "taste_expectation": 2.6,
+        "health_value": 2.4,
+        "time_required": 52
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u6_d9",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 3.8,
+        "stress_level": 5.0,
+        "hunger_level": 3.7,
+        "budget_remaining": 7917,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 421,
+        "taste_expectation": 5.0,
+        "health_value": 2.8,
+        "time_required": 39
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u6_d10",
+      "user_id": 6,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "月曜日",
+        "weather": "曇り",
+        "mood": 1.8,
+        "stress_level": 2.8,
+        "hunger_level": 4.2,
+        "budget_remaining": 5774,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1681,
+        "taste_expectation": 4.1,
+        "health_value": 5.0,
+        "time_required": 113
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u6_d11",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "14:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 3.6,
+        "stress_level": 4.2,
+        "hunger_level": 4.6,
+        "budget_remaining": 6052,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 760,
+        "taste_expectation": 3.8,
+        "health_value": 3.8,
+        "time_required": 51
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u6_d12",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 4.2,
+        "hunger_level": 4.8,
+        "budget_remaining": 2064,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 4.3,
+        "health_value": 4.5,
+        "time_required": 31
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u6_d13",
+      "user_id": 6,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.8,
+        "stress_level": 4.8,
+        "hunger_level": 4.9,
+        "budget_remaining": 2814,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 2922,
+        "taste_expectation": 4.5,
+        "health_value": 2.8,
+        "time_required": 45
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u6_d14",
+      "user_id": 6,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 1.6,
+        "stress_level": 1.2,
+        "hunger_level": 4.6,
+        "budget_remaining": 8919,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1473,
+        "taste_expectation": 2.1,
+        "health_value": 1.1,
+        "time_required": 49
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u6_d15",
+      "user_id": 6,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 1.8,
+        "stress_level": 4.4,
+        "hunger_level": 4.2,
+        "budget_remaining": 7981,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 917,
+        "taste_expectation": 4.5,
+        "health_value": 4.2,
+        "time_required": 69
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u6_d16",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "23:00",
+        "day_of_week": "日曜日",
+        "weather": "雨",
+        "mood": 3.2,
+        "stress_level": 5.0,
+        "hunger_level": 4.9,
+        "budget_remaining": 4262,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 627,
+        "taste_expectation": 2.3,
+        "health_value": 1.6,
+        "time_required": 27
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u6_d17",
+      "user_id": 6,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 2.7,
+        "stress_level": 4.3,
+        "hunger_level": 3.9,
+        "budget_remaining": 6709,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 3.2,
+        "health_value": 2.8,
+        "time_required": 25
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u6_d18",
+      "user_id": 6,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 4.2,
+        "stress_level": 4.0,
+        "hunger_level": 5.0,
+        "budget_remaining": 3110,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 792,
+        "taste_expectation": 3.4,
+        "health_value": 1.9,
+        "time_required": 83
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u6_d19",
+      "user_id": 6,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 3.4,
+        "stress_level": 5.0,
+        "hunger_level": 5.0,
+        "budget_remaining": 2169,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1572,
+        "taste_expectation": 4.9,
+        "health_value": 3.3,
+        "time_required": 84
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u7_d0",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 4.4,
+        "stress_level": 1.8,
+        "hunger_level": 2.3,
+        "budget_remaining": 7680,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1037,
+        "taste_expectation": 3.3,
+        "health_value": 2.7,
+        "time_required": 50
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u7_d1",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 1.0,
+        "hunger_level": 3.4,
+        "budget_remaining": 9907,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 448,
+        "taste_expectation": 2.6,
+        "health_value": 3.3,
+        "time_required": 36
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u7_d2",
+      "user_id": 7,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "16:00",
+        "day_of_week": "日曜日",
+        "weather": "雨",
+        "mood": 4.9,
+        "stress_level": 3.9,
+        "hunger_level": 4.2,
+        "budget_remaining": 7616,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 860,
+        "taste_expectation": 3.8,
+        "health_value": 3.2,
+        "time_required": 60
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u7_d3",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.2,
+        "stress_level": 1.9,
+        "hunger_level": 5.0,
+        "budget_remaining": 5543,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 641,
+        "taste_expectation": 3.8,
+        "health_value": 3.2,
+        "time_required": 31
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u7_d4",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 2.4,
+        "stress_level": 3.3,
+        "hunger_level": 5.0,
+        "budget_remaining": 4501,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 825,
+        "taste_expectation": 4.2,
+        "health_value": 2.5,
+        "time_required": 46
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u7_d5",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "10:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 3.2,
+        "stress_level": 4.2,
+        "hunger_level": 2.8,
+        "budget_remaining": 2122,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 986,
+        "taste_expectation": 3.9,
+        "health_value": 2.9,
+        "time_required": 65
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u7_d6",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "23:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.2,
+        "stress_level": 3.1,
+        "hunger_level": 1.0,
+        "budget_remaining": 2945,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 638,
+        "taste_expectation": 3.6,
+        "health_value": 3.8,
+        "time_required": 22
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u7_d7",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "17:00",
+        "day_of_week": "月曜日",
+        "weather": "曇り",
+        "mood": 1.3,
+        "stress_level": 1.2,
+        "hunger_level": 3.9,
+        "budget_remaining": 8749,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1497,
+        "taste_expectation": 3.8,
+        "health_value": 3.3,
+        "time_required": 32
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u7_d8",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "土曜日",
+        "weather": "雨",
+        "mood": 2.9,
+        "stress_level": 4.0,
+        "hunger_level": 5.0,
+        "budget_remaining": 9116,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 639,
+        "taste_expectation": 3.7,
+        "health_value": 2.8,
+        "time_required": 34
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u7_d9",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 1.8,
+        "stress_level": 5.0,
+        "hunger_level": 2.8,
+        "budget_remaining": 7766,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 915,
+        "taste_expectation": 3.8,
+        "health_value": 3.0,
+        "time_required": 29
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u7_d10",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 1.1,
+        "stress_level": 3.0,
+        "hunger_level": 4.2,
+        "budget_remaining": 5367,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1049,
+        "taste_expectation": 3.1,
+        "health_value": 3.7,
+        "time_required": 17
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u7_d11",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 4.2,
+        "stress_level": 2.9,
+        "hunger_level": 5.0,
+        "budget_remaining": 6351,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1166,
+        "taste_expectation": 4.2,
+        "health_value": 1.8,
+        "time_required": 50
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u7_d12",
+      "user_id": 7,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 1.8,
+        "stress_level": 3.7,
+        "hunger_level": 5.0,
+        "budget_remaining": 3548,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1717,
+        "taste_expectation": 3.6,
+        "health_value": 3.4,
+        "time_required": 93
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u7_d13",
+      "user_id": 7,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.3,
+        "stress_level": 1.8,
+        "hunger_level": 3.9,
+        "budget_remaining": 1496,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 828,
+        "taste_expectation": 2.0,
+        "health_value": 1.0,
+        "time_required": 140
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u7_d14",
+      "user_id": 7,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 3.3,
+        "stress_level": 2.9,
+        "hunger_level": 4.0,
+        "budget_remaining": 8029,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1089,
+        "taste_expectation": 2.2,
+        "health_value": 2.6,
+        "time_required": 143
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u7_d15",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "14:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 3.3,
+        "stress_level": 2.8,
+        "hunger_level": 2.2,
+        "budget_remaining": 8853,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 571,
+        "taste_expectation": 4.5,
+        "health_value": 3.4,
+        "time_required": 48
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u7_d16",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.1,
+        "stress_level": 3.3,
+        "hunger_level": 4.0,
+        "budget_remaining": 4900,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 773,
+        "taste_expectation": 4.0,
+        "health_value": 3.5,
+        "time_required": 34
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u7_d17",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 2.6,
+        "stress_level": 2.6,
+        "hunger_level": 2.7,
+        "budget_remaining": 5887,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 457,
+        "taste_expectation": 3.7,
+        "health_value": 1.4,
+        "time_required": 77
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u7_d18",
+      "user_id": 7,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 3.8,
+        "stress_level": 4.5,
+        "hunger_level": 2.8,
+        "budget_remaining": 3934,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 4.2,
+        "health_value": 4.0,
+        "time_required": 30
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u7_d19",
+      "user_id": 7,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "17:00",
+        "day_of_week": "土曜日",
+        "weather": "雨",
+        "mood": 1.5,
+        "stress_level": 3.4,
+        "hunger_level": 3.0,
+        "budget_remaining": 1082,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 959,
+        "taste_expectation": 4.4,
+        "health_value": 2.0,
+        "time_required": 135
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u8_d0",
+      "user_id": 8,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 3.2,
+        "stress_level": 3.8,
+        "hunger_level": 3.5,
+        "budget_remaining": 9124,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 696,
+        "taste_expectation": 3.1,
+        "health_value": 3.0,
+        "time_required": 70
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u8_d1",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 1.8,
+        "stress_level": 3.0,
+        "hunger_level": 4.4,
+        "budget_remaining": 9639,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 640,
+        "taste_expectation": 2.7,
+        "health_value": 2.5,
+        "time_required": 29
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u8_d2",
+      "user_id": 8,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "14:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.7,
+        "stress_level": 2.9,
+        "hunger_level": 4.3,
+        "budget_remaining": 8139,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 3336,
+        "taste_expectation": 3.7,
+        "health_value": 3.0,
+        "time_required": 73
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u8_d3",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 3.9,
+        "stress_level": 3.1,
+        "hunger_level": 2.7,
+        "budget_remaining": 6527,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1305,
+        "taste_expectation": 3.9,
+        "health_value": 3.9,
+        "time_required": 59
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u8_d4",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "火曜日",
+        "weather": "曇り",
+        "mood": 2.5,
+        "stress_level": 3.8,
+        "hunger_level": 3.9,
+        "budget_remaining": 5615,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 614,
+        "taste_expectation": 2.9,
+        "health_value": 3.3,
+        "time_required": 57
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u8_d5",
+      "user_id": 8,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "土曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 4.1,
+        "hunger_level": 5.0,
+        "budget_remaining": 2184,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1405,
+        "taste_expectation": 3.8,
+        "health_value": 4.1,
+        "time_required": 62
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u8_d6",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.4,
+        "stress_level": 5.0,
+        "hunger_level": 4.4,
+        "budget_remaining": 3344,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1295,
+        "taste_expectation": 3.4,
+        "health_value": 3.0,
+        "time_required": 38
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u8_d7",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "月曜日",
+        "weather": "雨",
+        "mood": 1.6,
+        "stress_level": 1.9,
+        "hunger_level": 4.5,
+        "budget_remaining": 8988,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 949,
+        "taste_expectation": 3.4,
+        "health_value": 4.1,
+        "time_required": 12
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u8_d8",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 2.4,
+        "stress_level": 1.7,
+        "hunger_level": 3.7,
+        "budget_remaining": 9398,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1390,
+        "taste_expectation": 4.3,
+        "health_value": 3.4,
+        "time_required": 54
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u8_d9",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "水曜日",
+        "weather": "雨",
+        "mood": 2.0,
+        "stress_level": 1.9,
+        "hunger_level": 4.4,
+        "budget_remaining": 9412,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 839,
+        "taste_expectation": 3.5,
+        "health_value": 2.1,
+        "time_required": 55
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u8_d10",
+      "user_id": 8,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "14:00",
+        "day_of_week": "月曜日",
+        "weather": "雨",
+        "mood": 2.7,
+        "stress_level": 3.4,
+        "hunger_level": 3.1,
+        "budget_remaining": 6440,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1717,
+        "taste_expectation": 4.7,
+        "health_value": 4.7,
+        "time_required": 46
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u8_d11",
+      "user_id": 8,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 3.0,
+        "stress_level": 1.1,
+        "hunger_level": 3.7,
+        "budget_remaining": 5357,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1686,
+        "taste_expectation": 4.3,
+        "health_value": 1.9,
+        "time_required": 49
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u8_d12",
+      "user_id": 8,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "水曜日",
+        "weather": "晴れ",
+        "mood": 3.8,
+        "stress_level": 4.4,
+        "hunger_level": 4.0,
+        "budget_remaining": 3854,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 880,
+        "taste_expectation": 4.3,
+        "health_value": 3.9,
+        "time_required": 77
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u8_d13",
+      "user_id": 8,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.6,
+        "stress_level": 3.9,
+        "hunger_level": 4.3,
+        "budget_remaining": 3214,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 889,
+        "taste_expectation": 4.2,
+        "health_value": 3.1,
+        "time_required": 60
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u8_d14",
+      "user_id": 8,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 3.5,
+        "stress_level": 5.0,
+        "hunger_level": 3.8,
+        "budget_remaining": 9144,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1368,
+        "taste_expectation": 3.7,
+        "health_value": 3.9,
+        "time_required": 68
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u8_d15",
+      "user_id": 8,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "雨",
+        "mood": 3.8,
+        "stress_level": 3.6,
+        "hunger_level": 3.7,
+        "budget_remaining": 8102,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 500,
+        "taste_expectation": 4.0,
+        "health_value": 4.4,
+        "time_required": 55
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u8_d16",
+      "user_id": 8,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "20:00",
+        "day_of_week": "日曜日",
+        "weather": "曇り",
+        "mood": 1.8,
+        "stress_level": 3.3,
+        "hunger_level": 4.5,
+        "budget_remaining": 6238,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1994,
+        "taste_expectation": 4.4,
+        "health_value": 4.5,
+        "time_required": 128
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u8_d17",
+      "user_id": 8,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "17:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 2.5,
+        "stress_level": 2.0,
+        "hunger_level": 2.2,
+        "budget_remaining": 5084,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2776,
+        "taste_expectation": 4.2,
+        "health_value": 1.4,
+        "time_required": 45
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u8_d18",
+      "user_id": 8,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "9:00",
+        "day_of_week": "火曜日",
+        "weather": "雨",
+        "mood": 3.7,
+        "stress_level": 3.5,
+        "hunger_level": 3.0,
+        "budget_remaining": 2470,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 400,
+        "taste_expectation": 3.6,
+        "health_value": 3.1,
+        "time_required": 48
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u8_d19",
+      "user_id": 8,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 1.9,
+        "stress_level": 4.5,
+        "hunger_level": 4.6,
+        "budget_remaining": 2673,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 800,
+        "taste_expectation": 4.0,
+        "health_value": 2.5,
+        "time_required": 124
+      },
+      "created_at": "2025-10-25T00:00:00"
+    },
+    {
+      "id": "u9_d0",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "14:00",
+        "day_of_week": "金曜日",
+        "weather": "雪",
+        "mood": 2.6,
+        "stress_level": 2.1,
+        "hunger_level": 2.8,
+        "budget_remaining": 8716,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1509,
+        "taste_expectation": 4.4,
+        "health_value": 3.8,
+        "time_required": 135
+      },
+      "created_at": "2025-08-01T00:00:00"
+    },
+    {
+      "id": "u9_d1",
+      "user_id": 9,
+      "category": "学習",
+      "decision_text": "学習の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 1.2,
+        "stress_level": 3.8,
+        "hunger_level": 4.2,
+        "budget_remaining": 8507,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1113,
+        "taste_expectation": 3.9,
+        "health_value": 4.8,
+        "time_required": 94
+      },
+      "created_at": "2025-08-05T00:00:00"
+    },
+    {
+      "id": "u9_d2",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "日曜日",
+        "weather": "雨",
+        "mood": 2.8,
+        "stress_level": 1.8,
+        "hunger_level": 3.8,
+        "budget_remaining": 8637,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1711,
+        "taste_expectation": 3.9,
+        "health_value": 2.9,
+        "time_required": 134
+      },
+      "created_at": "2025-08-10T00:00:00"
+    },
+    {
+      "id": "u9_d3",
+      "user_id": 9,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.8,
+        "stress_level": 2.4,
+        "hunger_level": 3.8,
+        "budget_remaining": 4409,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1753,
+        "taste_expectation": 3.5,
+        "health_value": 2.9,
+        "time_required": 105
+      },
+      "created_at": "2025-08-14T00:00:00"
+    },
+    {
+      "id": "u9_d4",
+      "user_id": 9,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "23:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 1.4,
+        "stress_level": 5.0,
+        "hunger_level": 3.6,
+        "budget_remaining": 4177,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 599,
+        "taste_expectation": 3.7,
+        "health_value": 3.2,
+        "time_required": 20
+      },
+      "created_at": "2025-08-19T00:00:00"
+    },
+    {
+      "id": "u9_d5",
+      "user_id": 9,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "17:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 2.9,
+        "stress_level": 2.4,
+        "hunger_level": 2.1,
+        "budget_remaining": 1445,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2421,
+        "taste_expectation": 3.2,
+        "health_value": 3.9,
+        "time_required": 52
+      },
+      "created_at": "2025-08-23T00:00:00"
+    },
+    {
+      "id": "u9_d6",
+      "user_id": 9,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "木曜日",
+        "weather": "晴れ",
+        "mood": 3.0,
+        "stress_level": 5.0,
+        "hunger_level": 1.9,
+        "budget_remaining": 3004,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1525,
+        "taste_expectation": 4.0,
+        "health_value": 4.2,
+        "time_required": 50
+      },
+      "created_at": "2025-08-28T00:00:00"
+    },
+    {
+      "id": "u9_d7",
+      "user_id": 9,
+      "category": "仕事",
+      "decision_text": "仕事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "月曜日",
+        "weather": "曇り",
+        "mood": 1.0,
+        "stress_level": 4.1,
+        "hunger_level": 3.5,
+        "budget_remaining": 7100,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1295,
+        "taste_expectation": 2.8,
+        "health_value": 1.7,
+        "time_required": 96
+      },
+      "created_at": "2025-09-01T00:00:00"
+    },
+    {
+      "id": "u9_d8",
+      "user_id": 9,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "9:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 2.8,
+        "stress_level": 2.3,
+        "hunger_level": 3.1,
+        "budget_remaining": 7376,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 698,
+        "taste_expectation": 1.6,
+        "health_value": 2.7,
+        "time_required": 39
+      },
+      "created_at": "2025-09-06T00:00:00"
+    },
+    {
+      "id": "u9_d9",
+      "user_id": 9,
+      "category": "仕事",
+      "decision_text": "仕事の選択",
+      "context": {
+        "time_of_day": "18:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 3.2,
+        "stress_level": 3.1,
+        "hunger_level": 3.1,
+        "budget_remaining": 8348,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 808,
+        "taste_expectation": 2.3,
+        "health_value": 1.2,
+        "time_required": 117
+      },
+      "created_at": "2025-09-10T00:00:00"
+    },
+    {
+      "id": "u9_d10",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "月曜日",
+        "weather": "晴れ",
+        "mood": 4.2,
+        "stress_level": 4.1,
+        "hunger_level": 5.0,
+        "budget_remaining": 5825,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1485,
+        "taste_expectation": 2.1,
+        "health_value": 2.8,
+        "time_required": 84
+      },
+      "created_at": "2025-09-15T00:00:00"
+    },
+    {
+      "id": "u9_d11",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "金曜日",
+        "weather": "晴れ",
+        "mood": 4.2,
+        "stress_level": 4.6,
+        "hunger_level": 4.2,
+        "budget_remaining": 5490,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 2027,
+        "taste_expectation": 5.0,
+        "health_value": 3.1,
+        "time_required": 77
+      },
+      "created_at": "2025-09-19T00:00:00"
+    },
+    {
+      "id": "u9_d12",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "19:00",
+        "day_of_week": "水曜日",
+        "weather": "曇り",
+        "mood": 4.5,
+        "stress_level": 3.1,
+        "hunger_level": 5.0,
+        "budget_remaining": 3571,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1002,
+        "taste_expectation": 4.8,
+        "health_value": 2.4,
+        "time_required": 56
+      },
+      "created_at": "2025-09-24T00:00:00"
+    },
+    {
+      "id": "u9_d13",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 4.0,
+        "stress_level": 5.0,
+        "hunger_level": 2.2,
+        "budget_remaining": 2747,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1678,
+        "taste_expectation": 3.5,
+        "health_value": 2.9,
+        "time_required": 121
+      },
+      "created_at": "2025-09-28T00:00:00"
+    },
+    {
+      "id": "u9_d14",
+      "user_id": 9,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "22:00",
+        "day_of_week": "金曜日",
+        "weather": "曇り",
+        "mood": 3.0,
+        "stress_level": 2.5,
+        "hunger_level": 2.0,
+        "budget_remaining": 8763,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1767,
+        "taste_expectation": 4.8,
+        "health_value": 4.1,
+        "time_required": 54
+      },
+      "created_at": "2025-10-03T00:00:00"
+    },
+    {
+      "id": "u9_d15",
+      "user_id": 9,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "晴れ",
+        "mood": 4.0,
+        "stress_level": 4.6,
+        "hunger_level": 4.3,
+        "budget_remaining": 9259,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1919,
+        "taste_expectation": 3.7,
+        "health_value": 2.1,
+        "time_required": 45
+      },
+      "created_at": "2025-10-07T00:00:00"
+    },
+    {
+      "id": "u9_d16",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "日曜日",
+        "weather": "晴れ",
+        "mood": 3.3,
+        "stress_level": 2.4,
+        "hunger_level": 3.9,
+        "budget_remaining": 5158,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 2284,
+        "taste_expectation": 4.6,
+        "health_value": 2.5,
+        "time_required": 154
+      },
+      "created_at": "2025-10-12T00:00:00"
+    },
+    {
+      "id": "u9_d17",
+      "user_id": 9,
+      "category": "買い物",
+      "decision_text": "買い物の選択",
+      "context": {
+        "time_of_day": "13:00",
+        "day_of_week": "木曜日",
+        "weather": "曇り",
+        "mood": 3.5,
+        "stress_level": 4.0,
+        "hunger_level": 2.9,
+        "budget_remaining": 4855,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1529,
+        "taste_expectation": 3.0,
+        "health_value": 3.2,
+        "time_required": 38
+      },
+      "created_at": "2025-10-16T00:00:00"
+    },
+    {
+      "id": "u9_d18",
+      "user_id": 9,
+      "category": "娯楽",
+      "decision_text": "娯楽の選択",
+      "context": {
+        "time_of_day": "12:00",
+        "day_of_week": "火曜日",
+        "weather": "雨",
+        "mood": 4.5,
+        "stress_level": 4.2,
+        "hunger_level": 4.6,
+        "budget_remaining": 3229,
+        "with_others": true
+      },
+      "decision_factors": {
+        "price": 1486,
+        "taste_expectation": 4.3,
+        "health_value": 2.2,
+        "time_required": 76
+      },
+      "created_at": "2025-10-21T00:00:00"
+    },
+    {
+      "id": "u9_d19",
+      "user_id": 9,
+      "category": "食事",
+      "decision_text": "食事の選択",
+      "context": {
+        "time_of_day": "11:00",
+        "day_of_week": "土曜日",
+        "weather": "曇り",
+        "mood": 2.0,
+        "stress_level": 2.8,
+        "hunger_level": 3.9,
+        "budget_remaining": 2529,
+        "with_others": false
+      },
+      "decision_factors": {
+        "price": 1163,
+        "taste_expectation": 5.0,
+        "health_value": 1.0,
+        "time_required": 26
+      },
+      "created_at": "2025-10-25T00:00:00"
+    }
+  ],
+  "feedbacks": [
+    {
+      "decision_id": "u0_d0",
+      "user_id": 0,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u0_d1",
+      "user_id": 0,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.6,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u0_d2",
+      "user_id": 0,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.0,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u0_d3",
+      "user_id": 0,
+      "regret_score": 3.7,
+      "satisfaction_score": 1.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u0_d4",
+      "user_id": 0,
+      "regret_score": 3.7,
+      "satisfaction_score": 1.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u0_d5",
+      "user_id": 0,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u0_d6",
+      "user_id": 0,
+      "regret_score": 2.8,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u0_d7",
+      "user_id": 0,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u0_d8",
+      "user_id": 0,
+      "regret_score": 3.0,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u0_d9",
+      "user_id": 0,
+      "regret_score": 3.9,
+      "satisfaction_score": 1.8,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u0_d10",
+      "user_id": 0,
+      "regret_score": 4.6,
+      "satisfaction_score": 1.1,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u0_d11",
+      "user_id": 0,
+      "regret_score": 3.2,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u0_d12",
+      "user_id": 0,
+      "regret_score": 5.0,
+      "satisfaction_score": 1.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u0_d13",
+      "user_id": 0,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u0_d14",
+      "user_id": 0,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.0,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u0_d15",
+      "user_id": 0,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u0_d16",
+      "user_id": 0,
+      "regret_score": 2.8,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u0_d17",
+      "user_id": 0,
+      "regret_score": 3.1,
+      "satisfaction_score": 3.1,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u0_d18",
+      "user_id": 0,
+      "regret_score": 3.8,
+      "satisfaction_score": 1.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u0_d19",
+      "user_id": 0,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u1_d0",
+      "user_id": 1,
+      "regret_score": 5.0,
+      "satisfaction_score": 1.0,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u1_d1",
+      "user_id": 1,
+      "regret_score": 2.3,
+      "satisfaction_score": 4.1,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u1_d2",
+      "user_id": 1,
+      "regret_score": 4.0,
+      "satisfaction_score": 1.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u1_d3",
+      "user_id": 1,
+      "regret_score": 3.1,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u1_d4",
+      "user_id": 1,
+      "regret_score": 3.6,
+      "satisfaction_score": 1.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u1_d5",
+      "user_id": 1,
+      "regret_score": 4.0,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u1_d6",
+      "user_id": 1,
+      "regret_score": 2.7,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u1_d7",
+      "user_id": 1,
+      "regret_score": 5.0,
+      "satisfaction_score": 1.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u1_d8",
+      "user_id": 1,
+      "regret_score": 4.2,
+      "satisfaction_score": 1.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u1_d9",
+      "user_id": 1,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.4,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u1_d10",
+      "user_id": 1,
+      "regret_score": 2.5,
+      "satisfaction_score": 3.1,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u1_d11",
+      "user_id": 1,
+      "regret_score": 2.8,
+      "satisfaction_score": 3.1,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u1_d12",
+      "user_id": 1,
+      "regret_score": 2.5,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u1_d13",
+      "user_id": 1,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u1_d14",
+      "user_id": 1,
+      "regret_score": 2.3,
+      "satisfaction_score": 3.9,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u1_d15",
+      "user_id": 1,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u1_d16",
+      "user_id": 1,
+      "regret_score": 3.0,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u1_d17",
+      "user_id": 1,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u1_d18",
+      "user_id": 1,
+      "regret_score": 3.9,
+      "satisfaction_score": 1.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u1_d19",
+      "user_id": 1,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u2_d0",
+      "user_id": 2,
+      "regret_score": 3.0,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u2_d1",
+      "user_id": 2,
+      "regret_score": 2.3,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u2_d2",
+      "user_id": 2,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u2_d3",
+      "user_id": 2,
+      "regret_score": 4.5,
+      "satisfaction_score": 2.0,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u2_d4",
+      "user_id": 2,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u2_d5",
+      "user_id": 2,
+      "regret_score": 4.3,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u2_d6",
+      "user_id": 2,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u2_d7",
+      "user_id": 2,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.4,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u2_d8",
+      "user_id": 2,
+      "regret_score": 2.9,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u2_d9",
+      "user_id": 2,
+      "regret_score": 2.4,
+      "satisfaction_score": 4.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u2_d10",
+      "user_id": 2,
+      "regret_score": 4.6,
+      "satisfaction_score": 1.3,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u2_d11",
+      "user_id": 2,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u2_d12",
+      "user_id": 2,
+      "regret_score": 2.6,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u2_d13",
+      "user_id": 2,
+      "regret_score": 4.9,
+      "satisfaction_score": 1.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u2_d14",
+      "user_id": 2,
+      "regret_score": 3.3,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u2_d15",
+      "user_id": 2,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u2_d16",
+      "user_id": 2,
+      "regret_score": 3.1,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u2_d17",
+      "user_id": 2,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u2_d18",
+      "user_id": 2,
+      "regret_score": 3.2,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u2_d19",
+      "user_id": 2,
+      "regret_score": 3.9,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u3_d0",
+      "user_id": 3,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u3_d1",
+      "user_id": 3,
+      "regret_score": 2.8,
+      "satisfaction_score": 3.1,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u3_d2",
+      "user_id": 3,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u3_d3",
+      "user_id": 3,
+      "regret_score": 3.6,
+      "satisfaction_score": 1.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u3_d4",
+      "user_id": 3,
+      "regret_score": 4.3,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u3_d5",
+      "user_id": 3,
+      "regret_score": 2.5,
+      "satisfaction_score": 3.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u3_d6",
+      "user_id": 3,
+      "regret_score": 4.3,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u3_d7",
+      "user_id": 3,
+      "regret_score": 5.0,
+      "satisfaction_score": 1.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u3_d8",
+      "user_id": 3,
+      "regret_score": 4.4,
+      "satisfaction_score": 2.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u3_d9",
+      "user_id": 3,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.4,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u3_d10",
+      "user_id": 3,
+      "regret_score": 3.2,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u3_d11",
+      "user_id": 3,
+      "regret_score": 4.7,
+      "satisfaction_score": 1.4,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u3_d12",
+      "user_id": 3,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u3_d13",
+      "user_id": 3,
+      "regret_score": 2.7,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u3_d14",
+      "user_id": 3,
+      "regret_score": 3.3,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u3_d15",
+      "user_id": 3,
+      "regret_score": 3.9,
+      "satisfaction_score": 1.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u3_d16",
+      "user_id": 3,
+      "regret_score": 3.6,
+      "satisfaction_score": 2.0,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u3_d17",
+      "user_id": 3,
+      "regret_score": 4.9,
+      "satisfaction_score": 1.0,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u3_d18",
+      "user_id": 3,
+      "regret_score": 5.0,
+      "satisfaction_score": 1.1,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u3_d19",
+      "user_id": 3,
+      "regret_score": 4.5,
+      "satisfaction_score": 1.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u4_d0",
+      "user_id": 4,
+      "regret_score": 2.5,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u4_d1",
+      "user_id": 4,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.8,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u4_d2",
+      "user_id": 4,
+      "regret_score": 4.1,
+      "satisfaction_score": 2.4,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u4_d3",
+      "user_id": 4,
+      "regret_score": 3.1,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u4_d4",
+      "user_id": 4,
+      "regret_score": 2.9,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u4_d5",
+      "user_id": 4,
+      "regret_score": 3.0,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u4_d6",
+      "user_id": 4,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.6,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u4_d7",
+      "user_id": 4,
+      "regret_score": 4.3,
+      "satisfaction_score": 1.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u4_d8",
+      "user_id": 4,
+      "regret_score": 2.8,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u4_d9",
+      "user_id": 4,
+      "regret_score": 2.4,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u4_d10",
+      "user_id": 4,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u4_d11",
+      "user_id": 4,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.6,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u4_d12",
+      "user_id": 4,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.6,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u4_d13",
+      "user_id": 4,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.6,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u4_d14",
+      "user_id": 4,
+      "regret_score": 4.3,
+      "satisfaction_score": 1.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u4_d15",
+      "user_id": 4,
+      "regret_score": 3.0,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u4_d16",
+      "user_id": 4,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u4_d17",
+      "user_id": 4,
+      "regret_score": 4.2,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u4_d18",
+      "user_id": 4,
+      "regret_score": 3.2,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u4_d19",
+      "user_id": 4,
+      "regret_score": 4.4,
+      "satisfaction_score": 1.6,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u5_d0",
+      "user_id": 5,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u5_d1",
+      "user_id": 5,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u5_d2",
+      "user_id": 5,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u5_d3",
+      "user_id": 5,
+      "regret_score": 2.6,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u5_d4",
+      "user_id": 5,
+      "regret_score": 4.2,
+      "satisfaction_score": 1.6,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u5_d5",
+      "user_id": 5,
+      "regret_score": 3.9,
+      "satisfaction_score": 1.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u5_d6",
+      "user_id": 5,
+      "regret_score": 3.1,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u5_d7",
+      "user_id": 5,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.6,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u5_d8",
+      "user_id": 5,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u5_d9",
+      "user_id": 5,
+      "regret_score": 2.4,
+      "satisfaction_score": 3.9,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u5_d10",
+      "user_id": 5,
+      "regret_score": 3.9,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u5_d11",
+      "user_id": 5,
+      "regret_score": 2.7,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u5_d12",
+      "user_id": 5,
+      "regret_score": 3.2,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u5_d13",
+      "user_id": 5,
+      "regret_score": 2.4,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u5_d14",
+      "user_id": 5,
+      "regret_score": 3.1,
+      "satisfaction_score": 2.6,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u5_d15",
+      "user_id": 5,
+      "regret_score": 3.2,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u5_d16",
+      "user_id": 5,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u5_d17",
+      "user_id": 5,
+      "regret_score": 3.1,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u5_d18",
+      "user_id": 5,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.0,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u5_d19",
+      "user_id": 5,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u6_d0",
+      "user_id": 6,
+      "regret_score": 4.3,
+      "satisfaction_score": 1.6,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u6_d1",
+      "user_id": 6,
+      "regret_score": 4.0,
+      "satisfaction_score": 1.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u6_d2",
+      "user_id": 6,
+      "regret_score": 3.9,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u6_d3",
+      "user_id": 6,
+      "regret_score": 4.5,
+      "satisfaction_score": 1.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u6_d4",
+      "user_id": 6,
+      "regret_score": 3.7,
+      "satisfaction_score": 1.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u6_d5",
+      "user_id": 6,
+      "regret_score": 3.9,
+      "satisfaction_score": 1.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u6_d6",
+      "user_id": 6,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u6_d7",
+      "user_id": 6,
+      "regret_score": 5.0,
+      "satisfaction_score": 1.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u6_d8",
+      "user_id": 6,
+      "regret_score": 4.4,
+      "satisfaction_score": 1.4,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u6_d9",
+      "user_id": 6,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u6_d10",
+      "user_id": 6,
+      "regret_score": 4.1,
+      "satisfaction_score": 1.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u6_d11",
+      "user_id": 6,
+      "regret_score": 3.0,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u6_d12",
+      "user_id": 6,
+      "regret_score": 4.2,
+      "satisfaction_score": 2.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u6_d13",
+      "user_id": 6,
+      "regret_score": 5.0,
+      "satisfaction_score": 1.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u6_d14",
+      "user_id": 6,
+      "regret_score": 4.0,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u6_d15",
+      "user_id": 6,
+      "regret_score": 3.9,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u6_d16",
+      "user_id": 6,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.4,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u6_d17",
+      "user_id": 6,
+      "regret_score": 3.0,
+      "satisfaction_score": 3.1,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u6_d18",
+      "user_id": 6,
+      "regret_score": 4.2,
+      "satisfaction_score": 1.4,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u6_d19",
+      "user_id": 6,
+      "regret_score": 4.1,
+      "satisfaction_score": 2.0,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u7_d0",
+      "user_id": 7,
+      "regret_score": 3.0,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u7_d1",
+      "user_id": 7,
+      "regret_score": 2.8,
+      "satisfaction_score": 3.1,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u7_d2",
+      "user_id": 7,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.8,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u7_d3",
+      "user_id": 7,
+      "regret_score": 2.4,
+      "satisfaction_score": 3.5,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u7_d4",
+      "user_id": 7,
+      "regret_score": 2.7,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u7_d5",
+      "user_id": 7,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.6,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u7_d6",
+      "user_id": 7,
+      "regret_score": 3.0,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u7_d7",
+      "user_id": 7,
+      "regret_score": 4.2,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u7_d8",
+      "user_id": 7,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u7_d9",
+      "user_id": 7,
+      "regret_score": 3.9,
+      "satisfaction_score": 2.3,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u7_d10",
+      "user_id": 7,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u7_d11",
+      "user_id": 7,
+      "regret_score": 3.0,
+      "satisfaction_score": 3.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u7_d12",
+      "user_id": 7,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u7_d13",
+      "user_id": 7,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.6,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u7_d14",
+      "user_id": 7,
+      "regret_score": 3.1,
+      "satisfaction_score": 2.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u7_d15",
+      "user_id": 7,
+      "regret_score": 2.4,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u7_d16",
+      "user_id": 7,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u7_d17",
+      "user_id": 7,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u7_d18",
+      "user_id": 7,
+      "regret_score": 2.8,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u7_d19",
+      "user_id": 7,
+      "regret_score": 3.8,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u8_d0",
+      "user_id": 8,
+      "regret_score": 2.5,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u8_d1",
+      "user_id": 8,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u8_d2",
+      "user_id": 8,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u8_d3",
+      "user_id": 8,
+      "regret_score": 2.1,
+      "satisfaction_score": 3.6,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u8_d4",
+      "user_id": 8,
+      "regret_score": 2.3,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u8_d5",
+      "user_id": 8,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u8_d6",
+      "user_id": 8,
+      "regret_score": 3.7,
+      "satisfaction_score": 2.8,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u8_d7",
+      "user_id": 8,
+      "regret_score": 3.1,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u8_d8",
+      "user_id": 8,
+      "regret_score": 2.4,
+      "satisfaction_score": 3.1,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u8_d9",
+      "user_id": 8,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u8_d10",
+      "user_id": 8,
+      "regret_score": 3.5,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u8_d11",
+      "user_id": 8,
+      "regret_score": 2.7,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u8_d12",
+      "user_id": 8,
+      "regret_score": 3.2,
+      "satisfaction_score": 3.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u8_d13",
+      "user_id": 8,
+      "regret_score": 2.3,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u8_d14",
+      "user_id": 8,
+      "regret_score": 3.6,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u8_d15",
+      "user_id": 8,
+      "regret_score": 2.4,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u8_d16",
+      "user_id": 8,
+      "regret_score": 2.8,
+      "satisfaction_score": 3.7,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u8_d17",
+      "user_id": 8,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u8_d18",
+      "user_id": 8,
+      "regret_score": 2.7,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u8_d19",
+      "user_id": 8,
+      "regret_score": 3.3,
+      "satisfaction_score": 2.9,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    },
+    {
+      "decision_id": "u9_d0",
+      "user_id": 9,
+      "regret_score": 3.1,
+      "satisfaction_score": 2.4,
+      "regret_reasons": [],
+      "created_at": "2025-08-01T02:00:00"
+    },
+    {
+      "decision_id": "u9_d1",
+      "user_id": 9,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.6,
+      "regret_reasons": [],
+      "created_at": "2025-08-05T02:00:00"
+    },
+    {
+      "decision_id": "u9_d2",
+      "user_id": 9,
+      "regret_score": 3.1,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-08-10T02:00:00"
+    },
+    {
+      "decision_id": "u9_d3",
+      "user_id": 9,
+      "regret_score": 3.0,
+      "satisfaction_score": 3.4,
+      "regret_reasons": [],
+      "created_at": "2025-08-14T02:00:00"
+    },
+    {
+      "decision_id": "u9_d4",
+      "user_id": 9,
+      "regret_score": 3.7,
+      "satisfaction_score": 1.9,
+      "regret_reasons": [],
+      "created_at": "2025-08-19T02:00:00"
+    },
+    {
+      "decision_id": "u9_d5",
+      "user_id": 9,
+      "regret_score": 3.4,
+      "satisfaction_score": 2.7,
+      "regret_reasons": [],
+      "created_at": "2025-08-23T02:00:00"
+    },
+    {
+      "decision_id": "u9_d6",
+      "user_id": 9,
+      "regret_score": 4.3,
+      "satisfaction_score": 1.5,
+      "regret_reasons": [],
+      "created_at": "2025-08-28T02:00:00"
+    },
+    {
+      "decision_id": "u9_d7",
+      "user_id": 9,
+      "regret_score": 4.7,
+      "satisfaction_score": 1.3,
+      "regret_reasons": [],
+      "created_at": "2025-09-01T02:00:00"
+    },
+    {
+      "decision_id": "u9_d8",
+      "user_id": 9,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.5,
+      "regret_reasons": [],
+      "created_at": "2025-09-06T02:00:00"
+    },
+    {
+      "decision_id": "u9_d9",
+      "user_id": 9,
+      "regret_score": 2.1,
+      "satisfaction_score": 4.0,
+      "regret_reasons": [],
+      "created_at": "2025-09-10T02:00:00"
+    },
+    {
+      "decision_id": "u9_d10",
+      "user_id": 9,
+      "regret_score": 4.3,
+      "satisfaction_score": 1.2,
+      "regret_reasons": [],
+      "created_at": "2025-09-15T02:00:00"
+    },
+    {
+      "decision_id": "u9_d11",
+      "user_id": 9,
+      "regret_score": 3.8,
+      "satisfaction_score": 1.8,
+      "regret_reasons": [],
+      "created_at": "2025-09-19T02:00:00"
+    },
+    {
+      "decision_id": "u9_d12",
+      "user_id": 9,
+      "regret_score": 2.6,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-09-24T02:00:00"
+    },
+    {
+      "decision_id": "u9_d13",
+      "user_id": 9,
+      "regret_score": 4.1,
+      "satisfaction_score": 1.7,
+      "regret_reasons": [],
+      "created_at": "2025-09-28T02:00:00"
+    },
+    {
+      "decision_id": "u9_d14",
+      "user_id": 9,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.5,
+      "regret_reasons": [],
+      "created_at": "2025-10-03T02:00:00"
+    },
+    {
+      "decision_id": "u9_d15",
+      "user_id": 9,
+      "regret_score": 3.9,
+      "satisfaction_score": 1.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-07T02:00:00"
+    },
+    {
+      "decision_id": "u9_d16",
+      "user_id": 9,
+      "regret_score": 3.0,
+      "satisfaction_score": 3.3,
+      "regret_reasons": [],
+      "created_at": "2025-10-12T02:00:00"
+    },
+    {
+      "decision_id": "u9_d17",
+      "user_id": 9,
+      "regret_score": 3.8,
+      "satisfaction_score": 1.8,
+      "regret_reasons": [],
+      "created_at": "2025-10-16T02:00:00"
+    },
+    {
+      "decision_id": "u9_d18",
+      "user_id": 9,
+      "regret_score": 4.0,
+      "satisfaction_score": 2.1,
+      "regret_reasons": [],
+      "created_at": "2025-10-21T02:00:00"
+    },
+    {
+      "decision_id": "u9_d19",
+      "user_id": 9,
+      "regret_score": 2.9,
+      "satisfaction_score": 3.2,
+      "regret_reasons": [],
+      "created_at": "2025-10-25T02:00:00"
+    }
+  ],
+  "metadata": {
+    "n_users": 10,
+    "decisions_per_user": 20,
+    "total_decisions": 200,
+    "user_type_distribution": {
+      "stress_sensitive": 0.3,
+      "price_sensitive": 0.3,
+      "mood_dependent": 0.2,
+      "random": 0.2
+    },
+    "seed": 42,
+    "generated_at": "2025-10-29T14:23:38.552211"
+  }
+}

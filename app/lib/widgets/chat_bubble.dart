@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../config/theme.dart';
 import '../models/chat_message.dart';
@@ -15,41 +17,45 @@ class ChatBubble extends StatelessWidget {
 
     return Align(
       alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        margin: EdgeInsets.only(
-          top: 4,
-          bottom: 4,
-          left: isUser ? 60 : 8,
-          right: isUser ? 8 : 60,
-        ),
-        child: Column(
-          crossAxisAlignment:
-              isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              decoration: BoxDecoration(
-                color: isUser
-                    ? AppTheme.primaryColor
-                    : Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(18),
-                  topRight: const Radius.circular(18),
-                  bottomLeft: Radius.circular(isUser ? 18 : 4),
-                  bottomRight: Radius.circular(isUser ? 4 : 18),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
-                    blurRadius: 5,
-                    offset: const Offset(0, 2),
+      child: GestureDetector(
+        onLongPress: () => _copyToClipboard(context),
+        child: Container(
+          margin: EdgeInsets.only(
+            top: 3,
+            bottom: 3,
+            left: isUser ? 48 : 8,
+            right: isUser ? 8 : 48,
+          ),
+          child: Column(
+            crossAxisAlignment:
+                isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                decoration: BoxDecoration(
+                  color: isUser ? AppTheme.accentOrange : Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(18),
+                    topRight: const Radius.circular(18),
+                    bottomLeft: Radius.circular(isUser ? 18 : 4),
+                    bottomRight: Radius.circular(isUser ? 4 : 18),
                   ),
-                ],
+                  border: isUser
+                      ? null
+                      : Border.all(color: Colors.grey.shade200),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.04),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: _buildContent(context, isUser),
               ),
-              child: _buildContent(context, isUser),
-            ),
-            if (prediction != null) _buildPredictionBadge(prediction),
-          ],
+              if (prediction != null) _buildPredictionBadge(prediction),
+            ],
+          ),
         ),
       ),
     );
@@ -58,59 +64,73 @@ class ChatBubble extends StatelessWidget {
   Widget _buildContent(BuildContext context, bool isUser) {
     final text = message.content;
 
-    // URLを検出してリンク化
-    final urlRegex = RegExp(
-      r'https?://[^\s\)]+',
-      caseSensitive: false,
-    );
-
-    final matches = urlRegex.allMatches(text).toList();
-    if (matches.isEmpty) {
-      return Text(
+    if (isUser) {
+      return SelectableText(
         text,
-        style: TextStyle(
-          color: isUser ? Colors.white : Colors.black87,
-          fontSize: 15,
-        ),
+        style: const TextStyle(color: Colors.white, fontSize: 15),
       );
     }
 
-    // URLを含むテキストをリッチテキストで表示
-    final spans = <InlineSpan>[];
-    int lastEnd = 0;
-    for (final match in matches) {
-      if (match.start > lastEnd) {
-        spans.add(TextSpan(
-          text: text.substring(lastEnd, match.start),
-        ));
-      }
-      final url = match.group(0)!;
-      spans.add(WidgetSpan(
-        child: GestureDetector(
-          onTap: () => _launchUrl(url),
-          child: Text(
-            url.length > 40 ? '${url.substring(0, 40)}...' : url,
-            style: TextStyle(
-              color: isUser ? Colors.white70 : AppTheme.primaryColor,
-              decoration: TextDecoration.underline,
-              fontSize: 14,
-            ),
-          ),
+    return MarkdownBody(
+      data: text,
+      selectable: true,
+      onTapLink: (text, href, title) {
+        if (href != null) _launchUrl(href);
+      },
+      styleSheet: MarkdownStyleSheet(
+        p: const TextStyle(
+          color: AppTheme.textPrimary,
+          fontSize: 15,
+          height: 1.5,
         ),
-      ));
-      lastEnd = match.end;
-    }
-    if (lastEnd < text.length) {
-      spans.add(TextSpan(text: text.substring(lastEnd)));
-    }
-
-    return RichText(
-      text: TextSpan(
-        style: TextStyle(
-          color: isUser ? Colors.white : Colors.black87,
+        strong: const TextStyle(
+          color: AppTheme.textPrimary,
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+        ),
+        em: const TextStyle(
+          color: AppTheme.textPrimary,
+          fontSize: 15,
+          fontStyle: FontStyle.italic,
+        ),
+        listBullet: const TextStyle(
+          color: AppTheme.textPrimary,
           fontSize: 15,
         ),
-        children: spans,
+        code: TextStyle(
+          color: AppTheme.accentOrange,
+          fontSize: 13,
+          backgroundColor: Colors.grey.shade100,
+        ),
+        codeblockDecoration: BoxDecoration(
+          color: Colors.grey.shade50,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.grey.shade200),
+        ),
+        a: const TextStyle(
+          color: AppTheme.accentBlue,
+          decoration: TextDecoration.underline,
+        ),
+        h1: const TextStyle(
+          color: AppTheme.textPrimary,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+        h2: const TextStyle(
+          color: AppTheme.textPrimary,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+        h3: const TextStyle(
+          color: AppTheme.textPrimary,
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+        ),
+        blockquoteDecoration: BoxDecoration(
+          border: Border(
+            left: BorderSide(color: AppTheme.accentOrange, width: 3),
+          ),
+        ),
       ),
     );
   }
@@ -119,16 +139,15 @@ class ChatBubble extends StatelessWidget {
     final score = (prediction['regret_score'] as num?)?.toDouble() ?? 0;
     final riskLevel = prediction['risk_level'] as String? ?? '低';
     final warnings = List<String>.from(prediction['warnings'] ?? []);
+    final color = AppTheme.riskColor(riskLevel);
 
     return Container(
       margin: const EdgeInsets.only(top: 4),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: AppTheme.riskColor(riskLevel).withValues(alpha: 0.1),
+        color: color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: AppTheme.riskColor(riskLevel).withValues(alpha: 0.3),
-        ),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,25 +161,25 @@ class ChatBubble extends StatelessWidget {
                     : riskLevel == '中'
                         ? Icons.info_outline
                         : Icons.check_circle_outline,
-                size: 16,
-                color: AppTheme.riskColor(riskLevel),
+                size: 14,
+                color: color,
               ),
               const SizedBox(width: 4),
-              Text(
-                '後悔リスク: ${(score * 100).toInt()}% ($riskLevel)',
+              SelectableText(
+                '後悔リスク ${(score * 100).toInt()}%',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: AppTheme.riskColor(riskLevel),
+                  color: color,
                 ),
               ),
             ],
           ),
           if (warnings.isNotEmpty) ...[
-            const SizedBox(height: 4),
-            ...warnings.take(2).map((w) => Text(
+            const SizedBox(height: 2),
+            ...warnings.take(2).map((w) => SelectableText(
                   w,
-                  style: const TextStyle(fontSize: 11, color: Colors.black54),
+                  style: TextStyle(fontSize: 11, color: AppTheme.textSecondary),
                 )),
           ],
         ],
@@ -168,10 +187,18 @@ class ChatBubble extends StatelessWidget {
     );
   }
 
+  void _copyToClipboard(BuildContext context) {
+    Clipboard.setData(ClipboardData(text: message.content));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('コピーしました'),
+        duration: Duration(seconds: 1),
+      ),
+    );
+  }
+
   Future<void> _launchUrl(String url) async {
     final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 }

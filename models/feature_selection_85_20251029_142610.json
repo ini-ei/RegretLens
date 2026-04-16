@@ -1,0 +1,58 @@
+{
+  "method": "auto",
+  "n_features_selected": 12,
+  "selected_features": [
+    "price",
+    "taste_expectation",
+    "health_value",
+    "mood_score",
+    "stress_level",
+    "hunger_level",
+    "budget_remaining",
+    "day_of_week",
+    "weather_encoded",
+    "user_average_regret_this_category",
+    "user_regret_variance",
+    "similar_past_decisions_count"
+  ],
+  "selected_indices": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "feature_importance": {
+    "price": 0.021259907561568765,
+    "taste_expectation": 0.01873904740422227,
+    "health_value": 0.002177681971574345,
+    "time_required": 0.0019380609290232877,
+    "mood_score": 0.00961809750697495,
+    "stress_level": 0.10083826186045922,
+    "hunger_level": 0.003444328713423701,
+    "budget_remaining": 0.0032778724681333652,
+    "with_others": 0.00026180110792080026,
+    "hour_of_day": 0.0017855793179232446,
+    "is_lunch_time": 0.0003136595993153639,
+    "is_dinner_time": 0.0006461399632575556,
+    "day_of_week": 0.004899065353713391,
+    "weather_encoded": 0.006077364785767559,
+    "user_average_regret_this_category": 0.0022477949611881703,
+    "user_regret_variance": 0.0033153902831538585,
+    "similar_past_decisions_count": 0.0037867745452544203,
+    "recent_regret_trend": 0.0
+  },
+  "training_samples": 80,
+  "metadata": {
+    "user_id": 85,
+    "timestamp": "20251029_142610",
+    "datetime": "2025-10-29T14:26:10.943076"
+  }
+}

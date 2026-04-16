@@ -1,0 +1,80 @@
+{
+  "results": [
+    {
+      "n_users": 10,
+      "decisions_per_user": 50,
+      "total_decisions": 500,
+      "train_time_mean": 0.0533848762512207,
+      "train_time_total": 0.533848762512207,
+      "predict_time_mean_ms": 5.33848762512207,
+      "mae_mean": 0.10387500000000001,
+      "memory_data_mb": 1.453125,
+      "memory_total_mb": 3.421875,
+      "sample_size": 10
+    },
+    {
+      "n_users": 10,
+      "decisions_per_user": 100,
+      "total_decisions": 1000,
+      "train_time_mean": 0.09929137229919434,
+      "train_time_total": 0.9929137229919434,
+      "predict_time_mean_ms": 4.964568614959717,
+      "mae_mean": 0.08483331957625709,
+      "memory_data_mb": 0.96875,
+      "memory_total_mb": 2.125,
+      "sample_size": 10
+    },
+    {
+      "n_users": 50,
+      "decisions_per_user": 50,
+      "total_decisions": 2500,
+      "train_time_mean": 0.05285775661468506,
+      "train_time_total": 0.5285775661468506,
+      "predict_time_mean_ms": 5.285775661468506,
+      "mae_mean": 0.09709499999999997,
+      "memory_data_mb": 3.75,
+      "memory_total_mb": 4.0625,
+      "sample_size": 10
+    },
+    {
+      "n_users": 50,
+      "decisions_per_user": 100,
+      "total_decisions": 5000,
+      "train_time_mean": 0.0996239185333252,
+      "train_time_total": 0.996239185333252,
+      "predict_time_mean_ms": 4.98119592666626,
+      "mae_mean": 0.0870768134920635,
+      "memory_data_mb": 7.734375,
+      "memory_total_mb": 8.0625,
+      "sample_size": 10
+    },
+    {
+      "n_users": 100,
+      "decisions_per_user": 50,
+      "total_decisions": 5000,
+      "train_time_mean": 0.052287864685058597,
+      "train_time_total": 0.5228786468505859,
+      "predict_time_mean_ms": 5.228786468505859,
+      "mae_mean": 0.09797999999999998,
+      "memory_data_mb": 5.890625,
+      "memory_total_mb": 6.109375,
+      "sample_size": 10
+    },
+    {
+      "n_users": 100,
+      "decisions_per_user": 100,
+      "total_decisions": 10000,
+      "train_time_mean": 0.1013899564743042,
+      "train_time_total": 1.013899564743042,
+      "predict_time_mean_ms": 5.06949782371521,
+      "mae_mean": 0.08736436526211361,
+      "memory_data_mb": 14.875,
+      "memory_total_mb": 15.171875,
+      "sample_size": 10
+    }
+  ],
+  "metadata": {
+    "seed": 42,
+    "timestamp": "2025-10-29T14:48:02.944938"
+  }
+}

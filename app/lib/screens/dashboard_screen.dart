@@ -43,7 +43,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('ダッシュボード')),
+      backgroundColor: AppTheme.bgColor,
+      appBar: AppBar(title: const Text('分析')),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : RefreshIndicator(
@@ -51,258 +52,89 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-                  _buildStatsCards(),
+                  Row(children: [
+                    Expanded(child: _StatCard(label: '意思決定', value: '${_stats['total_decisions'] ?? 0}', color: AppTheme.accentOrange)),
+                    const SizedBox(width: 12),
+                    Expanded(child: _StatCard(label: 'フィードバック', value: '${_stats['total_feedbacks'] ?? 0}', color: AppTheme.accentGreen)),
+                  ]),
                   const SizedBox(height: 16),
-                  _buildPatternsSection(),
-                  const SizedBox(height: 16),
-                  _buildCategoryChart(),
+                  _section('後悔パターン', _patterns.isEmpty
+                      ? [Padding(padding: const EdgeInsets.all(8), child: SelectableText('データが溜まると表示されます', style: TextStyle(color: AppTheme.textSecondary)))]
+                      : _patterns.take(5).map(_patternTile).toList()),
+                  if (_categoryStats.isNotEmpty) ...[
+                    const SizedBox(height: 16),
+                    _section('カテゴリ別', [SizedBox(height: 200, child: _chart())]),
+                  ],
                 ],
               ),
             ),
     );
   }
 
-  Widget _buildStatsCards() {
-    return Row(
-      children: [
-        Expanded(
-          child: _StatCard(
-            icon: Icons.lightbulb_outline,
-            label: '意思決定',
-            value: '${_stats['total_decisions'] ?? 0}',
-            color: AppTheme.primaryColor,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: _StatCard(
-            icon: Icons.feedback,
-            label: 'フィードバック',
-            value: '${_stats['total_feedbacks'] ?? 0}',
-            color: AppTheme.secondaryColor,
-          ),
-        ),
-      ],
+  Widget _section(String title, List<Widget> children) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: AppTheme.cardDecoration(),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        SelectableText(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppTheme.textPrimary)),
+        const SizedBox(height: 12),
+        ...children,
+      ]),
     );
   }
 
-  Widget _buildPatternsSection() {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Row(
-              children: [
-                Icon(Icons.pattern, size: 20),
-                SizedBox(width: 8),
-                Text(
-                  '後悔パターン',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            if (_patterns.isEmpty)
-              const Text(
-                'まだパターンが検出されていません。\nもっとフィードバックを記録すると分析できます。',
-                style: TextStyle(color: Colors.grey),
-              )
-            else
-              ..._patterns.take(5).map((p) => _buildPatternTile(p)),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPatternTile(Map<String, dynamic> pattern) {
-    final avgRegret = (pattern['average_regret'] as num?)?.toDouble() ?? 0;
-    final count = pattern['occurrence_count'] ?? 0;
-    final color = avgRegret >= 4
-        ? AppTheme.dangerColor
-        : avgRegret >= 3
-            ? AppTheme.warningColor
-            : AppTheme.secondaryColor;
-
+  Widget _patternTile(Map<String, dynamic> p) {
+    final avg = (p['average_regret'] as num?)?.toDouble() ?? 0;
+    final color = avg >= 4 ? AppTheme.dangerColor : avg >= 3 ? AppTheme.warningColor : AppTheme.secondaryColor;
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withValues(alpha: 0.2)),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  pattern['pattern_type'] ?? '',
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  '$count回発生 / 平均後悔度 ${avgRegret.toStringAsFixed(1)}',
-                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              '${avgRegret.toStringAsFixed(1)}/5',
-              style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 13),
-            ),
-          ),
-        ],
-      ),
+      decoration: BoxDecoration(color: color.withValues(alpha: 0.06), borderRadius: BorderRadius.circular(10)),
+      child: Row(children: [
+        Expanded(child: SelectableText(p['pattern_type'] ?? '', style: const TextStyle(fontWeight: FontWeight.w600, color: AppTheme.textPrimary))),
+        SelectableText('${avg.toStringAsFixed(1)}/5', style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 13)),
+      ]),
     );
   }
 
-  Widget _buildCategoryChart() {
-    if (_categoryStats.isEmpty) return const SizedBox.shrink();
-
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Row(
-              children: [
-                Icon(Icons.bar_chart, size: 20),
-                SizedBox(width: 8),
-                Text(
-                  'カテゴリ別後悔度',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              height: 200,
-              child: BarChart(
-                BarChartData(
-                  alignment: BarChartAlignment.spaceAround,
-                  maxY: 5,
-                  barTouchData: BarTouchData(enabled: false),
-                  titlesData: FlTitlesData(
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        getTitlesWidget: (value, meta) {
-                          final keys = _categoryStats.keys.toList();
-                          if (value.toInt() >= keys.length) {
-                            return const SizedBox.shrink();
-                          }
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: Text(
-                              keys[value.toInt()],
-                              style: const TextStyle(fontSize: 11),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    leftTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        reservedSize: 28,
-                        getTitlesWidget: (value, meta) => Text(
-                          '${value.toInt()}',
-                          style: const TextStyle(fontSize: 11),
-                        ),
-                      ),
-                    ),
-                    topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                  ),
-                  gridData: FlGridData(
-                    show: true,
-                    drawVerticalLine: false,
-                    horizontalInterval: 1,
-                    getDrawingHorizontalLine: (value) => FlLine(
-                      color: Colors.grey.shade200,
-                      strokeWidth: 1,
-                    ),
-                  ),
-                  borderData: FlBorderData(show: false),
-                  barGroups: _categoryStats.entries.toList().asMap().entries.map((entry) {
-                    final idx = entry.key;
-                    final avg = entry.value.value;
-                    final color = avg >= 4
-                        ? AppTheme.dangerColor
-                        : avg >= 3
-                            ? AppTheme.warningColor
-                            : AppTheme.secondaryColor;
-                    return BarChartGroupData(
-                      x: idx,
-                      barRods: [
-                        BarChartRodData(
-                          toY: avg,
-                          color: color,
-                          width: 24,
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4),
-                            topRight: Radius.circular(4),
-                          ),
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-          ],
-        ),
+  Widget _chart() {
+    return BarChart(BarChartData(
+      alignment: BarChartAlignment.spaceAround, maxY: 5,
+      barTouchData: BarTouchData(enabled: false),
+      titlesData: FlTitlesData(
+        bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: (v, _) {
+          final keys = _categoryStats.keys.toList();
+          return v.toInt() < keys.length ? Padding(padding: const EdgeInsets.only(top: 8), child: Text(keys[v.toInt()], style: TextStyle(fontSize: 11, color: AppTheme.textSecondary))) : const SizedBox.shrink();
+        })),
+        leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 28, getTitlesWidget: (v, _) => Text('${v.toInt()}', style: TextStyle(fontSize: 11, color: AppTheme.textSecondary)))),
+        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
       ),
-    );
+      gridData: FlGridData(show: true, drawVerticalLine: false, horizontalInterval: 1, getDrawingHorizontalLine: (_) => FlLine(color: Colors.grey.shade200, strokeWidth: 1)),
+      borderData: FlBorderData(show: false),
+      barGroups: _categoryStats.entries.toList().asMap().entries.map((e) {
+        final avg = e.value.value;
+        return BarChartGroupData(x: e.key, barRods: [BarChartRodData(toY: avg, color: avg >= 4 ? AppTheme.dangerColor : avg >= 3 ? AppTheme.warningColor : AppTheme.accentGreen, width: 24, borderRadius: const BorderRadius.only(topLeft: Radius.circular(4), topRight: Radius.circular(4)))]);
+      }).toList(),
+    ));
   }
 }
 
 class _StatCard extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
+  final String label, value;
   final Color color;
-
-  const _StatCard({
-    required this.icon,
-    required this.label,
-    required this.value,
-    required this.color,
-  });
+  const _StatCard({required this.label, required this.value, required this.color});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Icon(icon, color: color, size: 28),
-            const SizedBox(height: 8),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: color,
-              ),
-            ),
-            Text(label, style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),
-          ],
-        ),
-      ),
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: AppTheme.cardDecoration(),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        SelectableText(value, style: TextStyle(fontSize: 32, fontWeight: FontWeight.w800, color: color)),
+        const SizedBox(height: 4),
+        SelectableText(label, style: TextStyle(fontSize: 13, color: AppTheme.textSecondary)),
+      ]),
     );
   }
 }

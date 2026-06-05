@@ -87,18 +87,46 @@ export function extractFeatures(
 }
 
 export function calculateRegretScore(features: DecisionFeatures): number {
-  let score = 0.3;
+  // 各要因を 0〜1 の寄与度に変換して重み付き合計。飽和しにくい連続スコア。
+  let raw = 0;
 
-  if (features.stress_level >= 4) score += 0.2;
-  if (features.price > 1000) score += 0.15;
-  if (features.user_average_regret_this_category >= 4) score += 0.25;
-  if (features.recent_regret_trend >= 4) score += 0.15;
-  if (features.taste_expectation <= 2) score += 0.2;
-  if (features.mood_score <= 2) score += 0.1;
-  if (features.hunger_level >= 5) score += 0.15;
-  if (features.budget_remaining < features.price) score += 0.2;
+  // ストレス（3が中立、5で最大）
+  raw += clamp01((features.stress_level - 3) / 2) * 0.20;
 
+  // 価格（1000円から効き始め、20000円で最大）
+  if (features.price > 1000) {
+    raw += clamp01((features.price - 1000) / 19000) * 0.18;
+  }
+
+  // 同カテゴリの過去後悔（3が中立、5で最大）— 効きすぎないよう緩やかに
+  raw += clamp01((features.user_average_regret_this_category - 3) / 2) * 0.18;
+
+  // 直近の後悔トレンド
+  raw += clamp01((features.recent_regret_trend - 3) / 2) * 0.12;
+
+  // 期待値の低さ（3が中立、1で最大）
+  raw += clamp01((3 - features.taste_expectation) / 2) * 0.12;
+
+  // 気分の低さ
+  raw += clamp01((3 - features.mood_score) / 2) * 0.08;
+
+  // 空腹（4以上で効く）
+  if (features.hunger_level >= 4) {
+    raw += clamp01((features.hunger_level - 3) / 2) * 0.08;
+  }
+
+  // 予算超過（budget_remainingが正の値の時だけ判定。デフォルト0は無視）
+  if (features.budget_remaining > 0 && features.budget_remaining < features.price) {
+    raw += 0.12;
+  }
+
+  // ベース 0.25 + 寄与（最大約0.33 → 上限0.95程度に収まる）
+  const score = 0.25 + raw;
   return Math.min(1.0, Math.max(0.0, score));
+}
+
+function clamp01(x: number): number {
+  return Math.min(1, Math.max(0, x));
 }
 
 export function getRiskLevel(score: number): string {

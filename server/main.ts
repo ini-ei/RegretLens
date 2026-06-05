@@ -137,6 +137,8 @@ interface PlaceItem {
   lng: number;
   rating: number;
   map_url: string;
+  description: string; // ジャンル・紹介・特徴
+  price: string;
 }
 
 async function searchPlaces(
@@ -193,7 +195,20 @@ async function searchPlaces(
     if (low.length) result += `注意点: ${low.map((r) => ((r.text as Record<string, string>)?.text || "").substring(0, 60)).join(" / ")}\n`;
 
     if (p.location) {
-      items.push({ name, lat: p.location.latitude, lng: p.location.longitude, rating, map_url: mapUrl });
+      // 説明文を組み立て（ジャンル・紹介・レビュー要点）
+      const descParts: string[] = [];
+      if (primaryType) descParts.push(primaryType);
+      if (summary) descParts.push(summary);
+      else if (high.length) descParts.push(((high[0].text as Record<string, string>)?.text || "").substring(0, 40));
+      items.push({
+        name,
+        lat: p.location.latitude,
+        lng: p.location.longitude,
+        rating,
+        map_url: mapUrl,
+        description: descParts.join(" / "),
+        price: price ? "¥".repeat(Number(price) || 1) : "",
+      });
     }
   }
   return { text: result, places: items };
@@ -423,6 +438,26 @@ async function handleStats(userId: string) {
   });
 }
 
+// 地図HTMLを返す（キーをサーバー内に隠蔽。iframeのsrcはこのエンドポイントを指す）
+function handleMapEmbed(url: URL): Response {
+  const q = url.searchParams.get("q") || "飲食店";
+  const center = url.searchParams.get("center") || "";
+  const zoom = url.searchParams.get("zoom") || "15";
+
+  if (!PLACES_API_KEY) {
+    return new Response("<html><body>地図キー未設定</body></html>", {
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
+  }
+
+  const src = `https://www.google.com/maps/embed/v1/search?key=${PLACES_API_KEY}&q=${encodeURIComponent(q)}&center=${center}&zoom=${zoom}`;
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body,iframe{margin:0;padding:0;width:100%;height:100%;border:none;}</style></head><body><iframe src="${src}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></body></html>`;
+
+  return new Response(html, {
+    headers: { ...cors, "Content-Type": "text/html; charset=utf-8" },
+  });
+}
+
 // ============ ルーター ============
 
 Deno.serve(async (req) => {
@@ -434,6 +469,7 @@ Deno.serve(async (req) => {
   try {
     if (path === "/chat" && req.method === "POST") return await handleChat(await req.json());
     if (path === "/feedback" && req.method === "POST") return await handleFeedback(await req.json());
+    if (path === "/map" && req.method === "GET") return handleMapEmbed(url);
 
     if (path === "/decisions" && req.method === "GET") {
       const uid = url.searchParams.get("user_id");

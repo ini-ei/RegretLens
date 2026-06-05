@@ -45,9 +45,11 @@ const SYSTEM_PROMPT = `あなたは「RegretLens」という後悔予測AIアシ
 - 予算感を聞く時、後悔度を聞く時、Yes/No的な明確な選択のみ
 - 食事ジャンルなどは会話で自然に聞く方が良い。チップに頼りすぎない
 
-## 予算感の把握
-- ユーザーの過去の意思決定から予算感を読み取る
-- 一度聞いたら会話中は覚えておき、予算に合った提案をする
+## 予算感・好みの学習
+- ユーザーの予算感や好みを会話から把握したら update_profile で保存する
+- 保存した情報は次回以降の会話で「ユーザープロフィール」として提供されるので、それを踏まえて提案する
+- 既に分かっている好み・予算は聞き直さない。プロフィールがあれば活用する
+- 例: 「あっさり系が好き」「ランチは1000円以内」などを検出したら update_profile を呼ぶ
 
 ## 出力のスタイル
 - 回答は簡潔に。200文字以内を目安に
@@ -64,6 +66,24 @@ const TOOLS = [
         type: "object",
         properties: { options: { type: "array", items: { type: "string" } } },
         required: ["options"],
+      },
+    },
+  },
+  {
+    type: "function" as const,
+    function: {
+      name: "update_profile",
+      description: "会話からユーザーの予算感や好みを把握したら保存する。次回以降の提案に活用される。新しい情報を得た時のみ呼ぶ。",
+      parameters: {
+        type: "object",
+        properties: {
+          budget_level: { type: "string", description: "予算感（例: 節約志向, 普通, 贅沢好き, ランチは1000円以内 など）" },
+          preferences: {
+            type: "object",
+            description: "好みや傾向（例: {\"食事\": \"あっさり系が好き\", \"買い物\": \"衝動買いしがち\"}）",
+          },
+          notes: { type: "string", description: "その他覚えておくべき特徴（アレルギー、こだわり等）" },
+        },
       },
     },
   },
@@ -227,11 +247,24 @@ async function handleChat(body: Record<string, unknown>) {
 
   let contextAddition = "";
   if (user_id) {
+    const profiles = await sql`SELECT * FROM user_profiles WHERE user_id = ${user_id}`;
     const patterns = await sql`SELECT * FROM regret_patterns WHERE user_id = ${user_id} ORDER BY occurrence_count DESC LIMIT 5`;
     const decisions = await sql`
       SELECT d.*, COALESCE(json_agg(json_build_object('regret_score', f.regret_score)) FILTER (WHERE f.id IS NOT NULL), '[]') as feedbacks
       FROM decisions d LEFT JOIN feedbacks f ON f.decision_id = d.id
       WHERE d.user_id = ${user_id} GROUP BY d.id ORDER BY d.created_at DESC LIMIT 10`;
+
+    if (profiles.length > 0) {
+      const pf = profiles[0];
+      contextAddition += "\n\n## ユーザープロフィール（これを踏まえて提案する）\n";
+      if (pf.budget_level) contextAddition += `- 予算感: ${pf.budget_level}\n`;
+      const prefs = pf.preferences as Record<string, unknown>;
+      if (prefs && Object.keys(prefs).length > 0) {
+        for (const [k, v] of Object.entries(prefs)) contextAddition += `- ${k}: ${v}\n`;
+      }
+      if (pf.notes) contextAddition += `- メモ: ${pf.notes}\n`;
+    }
+
     if (patterns.length > 0) {
       contextAddition += "\n\n## ユーザーの後悔パターン\n";
       for (const p of patterns) contextAddition += `- ${p.pattern_type}（${p.occurrence_count}回、平均${Number(p.average_regret).toFixed(1)}）\n`;
@@ -291,6 +324,22 @@ async function handleChat(body: Record<string, unknown>) {
       if (tc.function.name === "show_quick_replies") {
         quickReplies = args.options || [];
         toolResults.push({ role: "tool", tool_call_id: tc.id, content: "選択肢を表示しました。ユーザーの選択を待ちます。" });
+      } else if (tc.function.name === "update_profile") {
+        if (user_id) {
+          // 既存プロフィールとマージ
+          const existing = await sql`SELECT * FROM user_profiles WHERE user_id = ${user_id}`;
+          const prevPrefs = existing.length > 0 ? (existing[0].preferences as Record<string, unknown>) || {} : {};
+          const newPrefs = { ...prevPrefs, ...(args.preferences || {}) };
+          await sql`
+            INSERT INTO user_profiles (user_id, budget_level, preferences, notes, updated_at)
+            VALUES (${user_id}, ${args.budget_level || null}, ${JSON.stringify(newPrefs)}, ${args.notes || null}, now())
+            ON CONFLICT (user_id) DO UPDATE SET
+              budget_level = COALESCE(${args.budget_level || null}, user_profiles.budget_level),
+              preferences = ${JSON.stringify(newPrefs)},
+              notes = COALESCE(${args.notes || null}, user_profiles.notes),
+              updated_at = now()`;
+        }
+        toolResults.push({ role: "tool", tool_call_id: tc.id, content: "プロフィールを更新しました。" });
       } else if (tc.function.name === "search_nearby_places") {
         if (lat && lng) {
           const sr = await searchPlaces(lat, lng, args.query, args.type);

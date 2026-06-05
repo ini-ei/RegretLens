@@ -66,6 +66,15 @@ create table if not exists regret_patterns (
 
 create index if not exists idx_regret_patterns_user_id on regret_patterns(user_id);
 
+-- ユーザープロフィール（予算感・好み・傾向を蓄積）
+create table if not exists user_profiles (
+  user_id text primary key,
+  budget_level text,
+  preferences jsonb default '{}'::jsonb,
+  notes text,
+  updated_at timestamptz default now()
+);
+
 -- 通知スケジュール
 create table if not exists scheduled_notifications (
   id uuid primary key default gen_random_uuid(),

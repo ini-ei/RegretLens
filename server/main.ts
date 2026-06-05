@@ -51,6 +51,14 @@ const SYSTEM_PROMPT = `あなたは「RegretLens」という後悔予測AIアシ
 - 既に分かっている好み・予算は聞き直さない。プロフィールがあれば活用する
 - 例: 「あっさり系が好き」「ランチは1000円以内」などを検出したら update_profile を呼ぶ
 
+## 後悔予測の活用
+- 意思決定を検出したら save_decision を呼ぶ。返ってくる regret_prediction を会話に活かす
+- 後悔リスクが高い（risk_level=高）時は、なぜ高いのか理由を一言添える
+  例: 「過去、疲れてる時の買い物で後悔しがちみたい。今日は一晩置いてみる？」
+- 「最近の意思決定」や「後悔パターン」に似たケースがあれば、それを引用して気づきを与える
+  例: 「先週も同じような高い買い物で後悔度4だったね」
+- 説教くさくならない。あくまで気づきのきっかけを与える程度に
+
 ## 出力のスタイル
 - 回答は簡潔に。200文字以内を目安に
 - 箇条書きは3つまで
@@ -126,7 +134,7 @@ const TOOLS = [
 
 // ============ ヘルパー ============
 
-async function fetchPageContent(url: string): Promise<string | null> {
+async function fetchPageContent(url: string, type: string): Promise<string | null> {
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15", "Accept-Language": "ja-JP,ja;q=0.9" },
@@ -134,7 +142,40 @@ async function fetchPageContent(url: string): Promise<string | null> {
     });
     if (!res.ok) return null;
     const html = await res.text();
-    return html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "").replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().substring(0, 4000);
+
+    // メタ情報を構造的に抽出
+    const parts: string[] = [];
+    const pick = (re: RegExp): string | null => {
+      const m = html.match(re);
+      return m ? m[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() : null;
+    };
+
+    const title = pick(/<title[^>]*>([\s\S]*?)<\/title>/i) ||
+      pick(/<meta property="og:title" content="([^"]+)"/i);
+    if (title) parts.push(`商品名/タイトル: ${title.substring(0, 120)}`);
+
+    const ogDesc = pick(/<meta property="og:description" content="([^"]+)"/i) ||
+      pick(/<meta name="description" content="([^"]+)"/i);
+    if (ogDesc) parts.push(`説明: ${ogDesc.substring(0, 200)}`);
+
+    // Amazon: 価格・評価
+    if (type === "amazon" || type === "rakuten") {
+      const price = pick(/[¥￥]\s?([\d,]+)/);
+      if (price) parts.push(`価格: ¥${price}`);
+      const rating = pick(/([\d.]+)\s*(?:つ星|out of 5|星)/i);
+      if (rating) parts.push(`評価: ${rating}`);
+    }
+
+    // 本文テキスト（補助）
+    const body = html
+      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .substring(0, 2500);
+
+    return `${parts.join("\n")}\n\n[ページ抜粋]\n${body}`;
   } catch { return null; }
 }
 
@@ -283,8 +324,8 @@ async function handleChat(body: Record<string, unknown>) {
   let userContent = message;
   if (urls.length > 0) {
     const results = await Promise.all(urls.slice(0, 2).map(async (url) => {
-      const content = await fetchPageContent(url);
       const type = types.get(url) || "other";
+      const content = await fetchPageContent(url, type);
       const label = type === "amazon" ? "Amazon" : type === "google_maps" ? "Googleマップ" : type === "tabelog" ? "食べログ" : "Web";
       return content ? `\n--- ${label} (${url}) ---\n${content}` : "";
     }));
@@ -351,9 +392,30 @@ async function handleChat(body: Record<string, unknown>) {
           toolResults.push({ role: "tool", tool_call_id: tc.id, content: "位置情報なし。一般的な提案を。" });
         }
       } else if (tc.function.name === "save_decision") {
+        // 実データから予測パラメータを算出
+        let catAvg = 3.0, catVar = 0, simCount = 0, recentTrend = 3.0;
+        if (user_id) {
+          const catRows = await sql`
+            SELECT f.regret_score FROM feedbacks f
+            JOIN decisions d ON d.id = f.decision_id
+            WHERE d.user_id = ${user_id} AND d.category = ${args.category}`;
+          const scores = catRows.map((r: Record<string, unknown>) => Number(r.regret_score));
+          simCount = scores.length;
+          if (scores.length > 0) {
+            catAvg = scores.reduce((a: number, b: number) => a + b, 0) / scores.length;
+            catVar = scores.reduce((s: number, x: number) => s + (x - catAvg) ** 2, 0) / scores.length;
+          }
+          const recentRows = await sql`
+            SELECT f.regret_score FROM feedbacks f
+            WHERE f.user_id = ${user_id} AND f.created_at >= now() - interval '7 days'`;
+          const rScores = recentRows.map((r: Record<string, unknown>) => Number(r.regret_score));
+          if (rScores.length > 0) {
+            recentTrend = rScores.reduce((a: number, b: number) => a + b, 0) / rScores.length;
+          }
+        }
         regretPrediction = predictRegret(
           { category: args.category, decision_text: args.decision_text, context: { stress_level: args.stress_level || 3 }, decision_factors: { price: args.price || 0 } },
-          3.0, 0, 0, 3.0,
+          catAvg, catVar, simCount, recentTrend,
         );
         if (user_id) {
           const rows = await sql`
@@ -480,10 +542,30 @@ async function handleStats(userId: string) {
     WHERE d.user_id = ${userId} GROUP BY d.category`;
   const categoryStats: Record<string, number> = {};
   for (const c of cats) categoryStats[c.category as string] = Number(c.avg_regret);
+  // 週次の後悔スコア推移（直近8週）
+  const trend = await sql`
+    SELECT date_trunc('week', f.created_at) as week, avg(f.regret_score) as avg_regret, count(*) as n
+    FROM feedbacks f
+    WHERE f.user_id = ${userId} AND f.created_at >= now() - interval '8 weeks'
+    GROUP BY week ORDER BY week`;
+  const weeklyTrend = trend.map((t: Record<string, unknown>) => ({
+    week: t.week,
+    avg_regret: Number(t.avg_regret),
+    count: Number(t.n),
+  }));
+
+  // 全体の平均後悔・満足度
+  const overall = await sql`
+    SELECT avg(regret_score) as avg_regret, avg(satisfaction_score) as avg_satisfaction
+    FROM feedbacks WHERE user_id = ${userId}`;
+
   return json({
     total_decisions: Number(stats[0].total_decisions),
     total_feedbacks: Number(stats[0].total_feedbacks),
     category_stats: categoryStats,
+    weekly_trend: weeklyTrend,
+    avg_regret: overall[0].avg_regret ? Number(overall[0].avg_regret) : null,
+    avg_satisfaction: overall[0].avg_satisfaction ? Number(overall[0].avg_satisfaction) : null,
   });
 }
 

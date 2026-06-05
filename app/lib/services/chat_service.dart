@@ -48,6 +48,7 @@ class ChatService {
       quickReplies: data['quick_replies'] != null
           ? List<String>.from(data['quick_replies'] as List)
           : [],
+      map: data['map'] as Map<String, dynamic>?,
     );
   }
 }
@@ -57,12 +58,14 @@ class ChatResponse {
   final Map<String, dynamic>? decision;
   final Map<String, dynamic>? regretPrediction;
   final List<String> quickReplies;
+  final Map<String, dynamic>? map;
 
   ChatResponse({
     required this.message,
     this.decision,
     this.regretPrediction,
     this.quickReplies = const [],
+    this.map,
   });
 
   bool get hasDecision => decision != null;

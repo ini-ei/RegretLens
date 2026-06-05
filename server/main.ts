@@ -131,8 +131,21 @@ function detectUrls(message: string) {
   return { urls: matches, types };
 }
 
-async function searchPlaces(lat: number, lng: number, query: string, type?: string): Promise<string> {
-  if (!PLACES_API_KEY) return "Places APIキーが未設定です";
+interface PlaceItem {
+  name: string;
+  lat: number;
+  lng: number;
+  rating: number;
+  map_url: string;
+}
+
+async function searchPlaces(
+  lat: number,
+  lng: number,
+  query: string,
+  type?: string,
+): Promise<{ text: string; places: PlaceItem[] }> {
+  if (!PLACES_API_KEY) return { text: "Places APIキーが未設定です", places: [] };
   const delta = 0.003;
   const body = {
     textQuery: `${query} ${type || ""}`.trim(),
@@ -150,15 +163,16 @@ async function searchPlaces(lat: number, lng: number, query: string, type?: stri
     headers: {
       "Content-Type": "application/json",
       "X-Goog-Api-Key": PLACES_API_KEY,
-      "X-Goog-FieldMask": "places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.priceLevel,places.reviews,places.primaryTypeDisplayName,places.editorialSummary,places.types",
+      "X-Goog-FieldMask": "places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.priceLevel,places.reviews,places.primaryTypeDisplayName,places.editorialSummary,places.types,places.location",
     },
     body: JSON.stringify(body),
   });
   const data = await res.json();
   const places = data.places || [];
-  if (places.length === 0) return "近くにお店が見つかりませんでした";
+  if (places.length === 0) return { text: "近くにお店が見つかりませんでした", places: [] };
 
   let result = "";
+  const items: PlaceItem[] = [];
   for (const p of places) {
     const name = p.displayName?.text || "不明";
     const rating = p.rating || 0;
@@ -177,8 +191,12 @@ async function searchPlaces(lat: number, lng: number, query: string, type?: stri
     const low = reviews.filter((r) => (r.rating as number) <= 3).slice(0, 2);
     if (high.length) result += `良い点: ${high.map((r) => ((r.text as Record<string, string>)?.text || "").substring(0, 60)).join(" / ")}\n`;
     if (low.length) result += `注意点: ${low.map((r) => ((r.text as Record<string, string>)?.text || "").substring(0, 60)).join(" / ")}\n`;
+
+    if (p.location) {
+      items.push({ name, lat: p.location.latitude, lng: p.location.longitude, rating, map_url: mapUrl });
+    }
   }
-  return result;
+  return { text: result, places: items };
 }
 
 // ============ ハンドラ ============
@@ -246,6 +264,7 @@ async function handleChat(body: Record<string, unknown>) {
   let savedDecision = null;
   let regretPrediction = null;
   let quickReplies: string[] = [];
+  let mapData: { center: { lat: number; lng: number }; places: PlaceItem[] } | null = null;
 
   while (choice.message.tool_calls?.length > 0) {
     if (choice.message.content) assistantMessage = choice.message.content;
@@ -258,8 +277,15 @@ async function handleChat(body: Record<string, unknown>) {
         quickReplies = args.options || [];
         toolResults.push({ role: "tool", tool_call_id: tc.id, content: "選択肢を表示しました。ユーザーの選択を待ちます。" });
       } else if (tc.function.name === "search_nearby_places") {
-        const r = (lat && lng) ? await searchPlaces(lat, lng, args.query, args.type) : "位置情報なし。一般的な提案を。";
-        toolResults.push({ role: "tool", tool_call_id: tc.id, content: r });
+        if (lat && lng) {
+          const sr = await searchPlaces(lat, lng, args.query, args.type);
+          toolResults.push({ role: "tool", tool_call_id: tc.id, content: sr.text });
+          if (sr.places.length > 0) {
+            mapData = { center: { lat, lng }, places: sr.places };
+          }
+        } else {
+          toolResults.push({ role: "tool", tool_call_id: tc.id, content: "位置情報なし。一般的な提案を。" });
+        }
       } else if (tc.function.name === "save_decision") {
         regretPrediction = predictRegret(
           { category: args.category, decision_text: args.decision_text, context: { stress_level: args.stress_level || 3 }, decision_factors: { price: args.price || 0 } },
@@ -307,7 +333,7 @@ async function handleChat(body: Record<string, unknown>) {
     await sql`INSERT INTO chat_messages (user_id, role, content, metadata) VALUES (${user_id}, 'assistant', ${assistantMessage}, ${JSON.stringify(regretPrediction ? { regret_prediction: regretPrediction } : {})})`;
   }
 
-  return json({ message: assistantMessage, decision: savedDecision, regret_prediction: regretPrediction, quick_replies: quickReplies });
+  return json({ message: assistantMessage, decision: savedDecision, regret_prediction: regretPrediction, quick_replies: quickReplies, map: mapData });
 }
 
 async function handleFeedback(body: Record<string, unknown>) {

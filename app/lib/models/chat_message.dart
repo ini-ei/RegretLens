@@ -44,4 +44,7 @@ class ChatMessage {
 
   Map<String, dynamic>? get regretPrediction =>
       metadata?['regret_prediction'] as Map<String, dynamic>?;
+
+  Map<String, dynamic>? get mapData =>
+      metadata?['map'] as Map<String, dynamic>?;
 }

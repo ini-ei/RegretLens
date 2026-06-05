@@ -5,6 +5,7 @@ import '../services/chat_service.dart';
 import '../services/places_service.dart';
 import '../services/auth_service.dart';
 import '../widgets/chat_bubble.dart';
+import '../widgets/map_widget.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -74,15 +75,17 @@ class _ChatScreenState extends State<ChatScreen> {
         lng: _cachedLocation?.longitude,
       );
 
+      final meta = <String, dynamic>{};
+      if (response.hasPrediction) meta['regret_prediction'] = response.regretPrediction;
+      if (response.map != null) meta['map'] = response.map;
+
       final assistantMessage = ChatMessage(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         userId: AuthService.currentUserId ?? '',
         role: 'assistant',
         content: response.message,
         decisionContext: response.decision,
-        metadata: response.hasPrediction
-            ? {'regret_prediction': response.regretPrediction}
-            : null,
+        metadata: meta.isEmpty ? null : meta,
         createdAt: DateTime.now(),
       );
 
@@ -255,7 +258,25 @@ class _ChatScreenState extends State<ChatScreen> {
       itemCount: _messages.length + (_isLoading ? 1 : 0),
       itemBuilder: (context, index) {
         if (index == _messages.length) return _buildTypingIndicator();
-        return ChatBubble(message: _messages[index]);
+        final msg = _messages[index];
+        final map = msg.mapData;
+        if (map != null && map['places'] != null) {
+          final places = List<Map<String, dynamic>>.from(map['places'] as List);
+          final center = map['center'] as Map<String, dynamic>;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ChatBubble(message: msg),
+              if (places.isNotEmpty)
+                StoreMapWidget(
+                  centerLat: (center['lat'] as num).toDouble(),
+                  centerLng: (center['lng'] as num).toDouble(),
+                  places: places,
+                ),
+            ],
+          );
+        }
+        return ChatBubble(message: msg);
       },
     );
   }

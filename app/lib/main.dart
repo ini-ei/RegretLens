@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'config/supabase_config.dart';
 import 'app.dart';
+import 'services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  try {
-    await Supabase.initialize(
-      url: SupabaseConfig.supabaseUrl,
-      anonKey: SupabaseConfig.supabaseAnonKey,
-    );
-  } catch (e) {
-    debugPrint('Supabase初期化スキップ: $e');
-  }
-
+  // 端末UUIDを初期化（無ければ生成）
+  await AuthService.getUserId();
   runApp(const RegretLensApp());
 }

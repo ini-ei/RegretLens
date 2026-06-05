@@ -3,7 +3,7 @@ import '../config/theme.dart';
 import '../models/chat_message.dart';
 import '../services/chat_service.dart';
 import '../services/places_service.dart';
-import '../services/supabase_service.dart';
+import '../services/auth_service.dart';
 import '../widgets/chat_bubble.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -55,7 +55,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     final userMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
-      userId: SupabaseService.currentUser?.id ?? '',
+      userId: AuthService.currentUserId ?? '',
       role: 'user',
       content: text,
       createdAt: DateTime.now(),
@@ -76,7 +76,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
       final assistantMessage = ChatMessage(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
-        userId: SupabaseService.currentUser?.id ?? '',
+        userId: AuthService.currentUserId ?? '',
         role: 'assistant',
         content: response.message,
         decisionContext: response.decision,

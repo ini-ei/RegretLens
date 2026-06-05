@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import '../services/api_service.dart';
 import '../config/theme.dart';
 import '../models/decision.dart';
 
@@ -82,7 +82,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     setState(() => _isSaving = true);
     try {
       final reasons = _reasonsController.text.split(',').map((r) => r.trim()).where((r) => r.isNotEmpty).toList();
-      await Supabase.instance.client.functions.invoke('feedback', body: {
+      await ApiService.submitFeedback({
         'decision_id': widget.decision.id,
         'regret_score': _regretScore.toInt(),
         'satisfaction_score': _satisfactionScore.toInt(),

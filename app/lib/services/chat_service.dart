@@ -1,16 +1,17 @@
 import 'dart:convert';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:http/http.dart' as http;
+import '../config/api_config.dart';
 import '../models/chat_message.dart';
+import 'auth_service.dart';
 
 class ChatService {
-  static SupabaseClient get _client => Supabase.instance.client;
-
   static Future<ChatResponse> sendMessage(
     String message,
     List<ChatMessage> conversationHistory, {
     double? lat,
     double? lng,
   }) async {
+    final uid = await AuthService.getUserId();
     final historyForApi = conversationHistory
         .map((m) => {'role': m.role, 'content': m.content})
         .toList();
@@ -18,24 +19,24 @@ class ChatService {
     final body = <String, dynamic>{
       'message': message,
       'conversation_history': historyForApi,
-      'user_id': _client.auth.currentUser?.id,
+      'user_id': uid,
     };
     if (lat != null && lng != null) {
       body['lat'] = lat;
       body['lng'] = lng;
     }
 
-    final res = await _client.functions.invoke('chat', body: body);
+    final res = await http.post(
+      Uri.parse('${ApiConfig.baseUrl}/chat'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(body),
+    );
 
-    Map<String, dynamic> data;
-    if (res.data is Map<String, dynamic>) {
-      data = res.data as Map<String, dynamic>;
-    } else if (res.data is String) {
-      data = json.decode(res.data as String) as Map<String, dynamic>;
-    } else {
-      throw Exception('予期しないレスポンス形式');
+    if (res.statusCode != 200) {
+      throw Exception('チャットエラー: ${res.statusCode}');
     }
 
+    final data = json.decode(res.body) as Map<String, dynamic>;
     if (data.containsKey('error')) {
       throw Exception(data['error']);
     }

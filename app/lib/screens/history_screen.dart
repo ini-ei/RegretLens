@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../config/theme.dart';
 import '../models/decision.dart';
-import '../services/supabase_service.dart';
+import '../services/api_service.dart';
 import 'feedback_screen.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   Future<void> _loadDecisions() async {
     try {
-      final decisions = await SupabaseService.getDecisions();
+      final decisions = await ApiService.getDecisions();
       setState(() { _decisions = decisions; _isLoading = false; });
     } catch (e) {
       setState(() => _isLoading = false);

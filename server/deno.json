@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-env --watch main.ts"
+  },
+  "imports": {
+    "@neondatabase/serverless": "npm:@neondatabase/serverless@1.1.0"
+  }
+}

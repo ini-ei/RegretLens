@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../config/theme.dart';
-import '../services/supabase_service.dart';
+import '../services/api_service.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -25,9 +25,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Future<void> _loadData() async {
     try {
       final results = await Future.wait([
-        SupabaseService.getDashboardStats(),
-        SupabaseService.getRegretPatterns(),
-        SupabaseService.getCategoryStats(),
+        ApiService.getDashboardStats(),
+        ApiService.getRegretPatterns(),
+        ApiService.getCategoryStats(),
       ]);
       setState(() {
         _stats = results[0] as Map<String, dynamic>;

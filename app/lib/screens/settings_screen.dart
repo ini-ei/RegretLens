@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../config/theme.dart';
-import '../services/supabase_service.dart';
+import '../services/auth_service.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final user = SupabaseService.currentUser;
-    final isAnonymous = user?.isAnonymous ?? true;
+    final userId = AuthService.currentUserId ?? '';
+    final shortId = userId.length > 8 ? userId.substring(0, 8) : userId;
 
     return Scaffold(
       backgroundColor: AppTheme.bgColor,
@@ -23,12 +23,12 @@ class SettingsScreen extends StatelessWidget {
               CircleAvatar(
                 radius: 24,
                 backgroundColor: AppTheme.accentOrange.withValues(alpha: 0.1),
-                child: Icon(isAnonymous ? Icons.person_outline : Icons.person, color: AppTheme.accentOrange),
+                child: const Icon(Icons.person_outline, color: AppTheme.accentOrange),
               ),
               const SizedBox(width: 14),
               Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                SelectableText(isAnonymous ? 'ゲストユーザー' : (user?.email ?? ''), style: const TextStyle(fontWeight: FontWeight.w600, color: AppTheme.textPrimary)),
-                SelectableText(isAnonymous ? 'ログインでデータを保護' : 'ログイン済み', style: TextStyle(fontSize: 12, color: AppTheme.textSecondary)),
+                const SelectableText('あなた', style: TextStyle(fontWeight: FontWeight.w600, color: AppTheme.textPrimary)),
+                SelectableText('ID: $shortId', style: TextStyle(fontSize: 12, color: AppTheme.textSecondary)),
               ])),
             ]),
           ),
@@ -38,9 +38,13 @@ class SettingsScreen extends StatelessWidget {
             showAboutDialog(context: context, applicationName: 'RegretLens', applicationVersion: '1.0.0');
           }),
           const SizedBox(height: 12),
-          _tile(context, Icons.logout, 'サインアウト', null, () async {
-            await SupabaseService.signOut();
-            if (context.mounted) Navigator.of(context).popUntil((route) => route.isFirst);
+          _tile(context, Icons.delete_outline, 'データをリセット', '記録を全て消して新しいIDを発行', () async {
+            await AuthService.reset();
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('リセットしました。アプリを再起動してください')),
+              );
+            }
           }, danger: true),
         ],
       ),

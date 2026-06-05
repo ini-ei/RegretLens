@@ -487,6 +487,24 @@ async function handleStats(userId: string) {
   });
 }
 
+// 期限が来た通知を取得（意思決定情報も結合）
+async function handleNotifications(userId: string) {
+  const rows = await sql`
+    SELECT n.*, d.decision_text, d.category, d.source_url
+    FROM scheduled_notifications n
+    JOIN decisions d ON d.id = n.decision_id
+    WHERE n.user_id = ${userId} AND n.is_sent = false AND n.notify_at <= now()
+    ORDER BY n.notify_at DESC`;
+  return json({ notifications: rows });
+}
+
+// 通知を既読（送信済み）にする
+async function handleMarkNotification(body: Record<string, unknown>) {
+  const id = body.id as string;
+  await sql`UPDATE scheduled_notifications SET is_sent = true WHERE id = ${id}`;
+  return json({ ok: true });
+}
+
 // 地図HTMLを返す（キーをサーバー内に隠蔽。iframeのsrcはこのエンドポイントを指す）
 function handleMapEmbed(url: URL): Response {
   const q = url.searchParams.get("q") || "飲食店";
@@ -519,6 +537,13 @@ Deno.serve(async (req) => {
     if (path === "/chat" && req.method === "POST") return await handleChat(await req.json());
     if (path === "/feedback" && req.method === "POST") return await handleFeedback(await req.json());
     if (path === "/map" && req.method === "GET") return handleMapEmbed(url);
+    if (path === "/notifications/read" && req.method === "POST") return await handleMarkNotification(await req.json());
+
+    if (path === "/notifications" && req.method === "GET") {
+      const uid = url.searchParams.get("user_id");
+      if (!uid) return json({ error: "user_id必須" }, 400);
+      return await handleNotifications(uid);
+    }
 
     if (path === "/decisions" && req.method === "GET") {
       const uid = url.searchParams.get("user_id");

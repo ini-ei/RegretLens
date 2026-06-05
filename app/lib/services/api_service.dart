@@ -61,6 +61,24 @@ class ApiService {
     return cats.map((k, v) => MapEntry(k, (v as num).toDouble()));
   }
 
+  // 期限が来た通知一覧
+  static Future<List<Map<String, dynamic>>> getNotifications() async {
+    final uid = await AuthService.getUserId();
+    final res = await http.get(_uri('/notifications', {'user_id': uid}));
+    if (res.statusCode != 200) return [];
+    final data = json.decode(res.body) as Map<String, dynamic>;
+    return List<Map<String, dynamic>>.from(data['notifications'] ?? []);
+  }
+
+  // 通知を既読化
+  static Future<void> markNotificationRead(String id) async {
+    await http.post(
+      _uri('/notifications/read'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'id': id}),
+    );
+  }
+
   // フィードバック送信
   static Future<void> submitFeedback(Map<String, dynamic> body) async {
     final uid = await AuthService.getUserId();

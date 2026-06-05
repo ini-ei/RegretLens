@@ -6,6 +6,7 @@ import '../services/places_service.dart';
 import '../services/auth_service.dart';
 import '../widgets/chat_bubble.dart';
 import '../widgets/map_widget.dart';
+import 'notifications_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -128,6 +129,13 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Container(height: 1, color: Colors.grey.shade200),
         ),
         actions: [
+          IconButton(
+            icon: Icon(Icons.notifications_none, color: AppTheme.textSecondary),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const NotificationsScreen()),
+            ),
+          ),
           if (_messages.isNotEmpty)
             IconButton(
               icon: Icon(Icons.refresh, color: AppTheme.textSecondary),

@@ -16,6 +16,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Map<String, double> _categoryStats = {};
   bool _isLoading = true;
 
+  double get _avgRegret => (_stats['avg_regret'] as num?)?.toDouble() ?? 0;
+  double get _avgSatisfaction => (_stats['avg_satisfaction'] as num?)?.toDouble() ?? 0;
+  List<Map<String, dynamic>> get _weeklyTrend =>
+      List<Map<String, dynamic>>.from(_stats['weekly_trend'] ?? []);
+
   @override
   void initState() {
     super.initState();
@@ -57,6 +62,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(width: 12),
                     Expanded(child: _StatCard(label: 'フィードバック', value: '${_stats['total_feedbacks'] ?? 0}', color: AppTheme.accentGreen)),
                   ]),
+                  const SizedBox(height: 12),
+                  Row(children: [
+                    Expanded(child: _StatCard(label: '平均後悔度', value: '${_avgRegret.toStringAsFixed(1)}/5', color: AppTheme.dangerColor)),
+                    const SizedBox(width: 12),
+                    Expanded(child: _StatCard(label: '平均満足度', value: '${_avgSatisfaction.toStringAsFixed(1)}/5', color: AppTheme.accentGreen)),
+                  ]),
+                  if (_weeklyTrend.isNotEmpty) ...[
+                    const SizedBox(height: 16),
+                    _section('後悔スコアの週次推移', [SizedBox(height: 200, child: _trendChart())]),
+                  ],
                   const SizedBox(height: 16),
                   _section('後悔パターン', _patterns.isEmpty
                       ? [Padding(padding: const EdgeInsets.all(8), child: SelectableText('データが溜まると表示されます', style: TextStyle(color: AppTheme.textSecondary)))]
@@ -116,6 +131,56 @@ class _DashboardScreenState extends State<DashboardScreen> {
         final avg = e.value.value;
         return BarChartGroupData(x: e.key, barRods: [BarChartRodData(toY: avg, color: avg >= 4 ? AppTheme.dangerColor : avg >= 3 ? AppTheme.warningColor : AppTheme.accentGreen, width: 24, borderRadius: const BorderRadius.only(topLeft: Radius.circular(4), topRight: Radius.circular(4)))]);
       }).toList(),
+    ));
+  }
+
+  Widget _trendChart() {
+    final trend = _weeklyTrend;
+    final spots = trend.asMap().entries.map((e) {
+      final avg = (e.value['avg_regret'] as num?)?.toDouble() ?? 0;
+      return FlSpot(e.key.toDouble(), avg);
+    }).toList();
+
+    String weekLabel(int i) {
+      if (i < 0 || i >= trend.length) return '';
+      final raw = trend[i]['week']?.toString();
+      if (raw == null) return '';
+      final dt = DateTime.tryParse(raw);
+      if (dt == null) return '';
+      return '${dt.month}/${dt.day}';
+    }
+
+    return LineChart(LineChartData(
+      minY: 0,
+      maxY: 5,
+      minX: 0,
+      maxX: (trend.length - 1).toDouble().clamp(0, double.infinity),
+      lineTouchData: const LineTouchData(enabled: false),
+      titlesData: FlTitlesData(
+        bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, interval: 1, getTitlesWidget: (v, _) {
+          final i = v.round();
+          if (i.toDouble() != v) return const SizedBox.shrink();
+          final label = weekLabel(i);
+          return label.isEmpty
+              ? const SizedBox.shrink()
+              : Padding(padding: const EdgeInsets.only(top: 8), child: Text(label, style: TextStyle(fontSize: 11, color: AppTheme.textSecondary)));
+        })),
+        leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 28, interval: 1, getTitlesWidget: (v, _) => Text('${v.toInt()}', style: TextStyle(fontSize: 11, color: AppTheme.textSecondary)))),
+        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      ),
+      gridData: FlGridData(show: true, drawVerticalLine: false, horizontalInterval: 1, getDrawingHorizontalLine: (_) => FlLine(color: Colors.grey.shade200, strokeWidth: 1)),
+      borderData: FlBorderData(show: false),
+      lineBarsData: [
+        LineChartBarData(
+          spots: spots,
+          isCurved: true,
+          color: AppTheme.accentOrange,
+          barWidth: 3,
+          dotData: const FlDotData(show: true),
+          belowBarData: BarAreaData(show: true, color: AppTheme.accentOrange.withValues(alpha: 0.08)),
+        ),
+      ],
     ));
   }
 }

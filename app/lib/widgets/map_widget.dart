@@ -31,7 +31,7 @@ class _StoreMapWidgetState extends State<StoreMapWidget> {
   void initState() {
     super.initState();
     _viewType = 'map-${_counter++}';
-    if (kIsWeb) _registerView();
+    if (kIsWeb && MapsConfig.embedApiKey.isNotEmpty) _registerView();
   }
 
   void _registerView() {
@@ -58,6 +58,8 @@ class _StoreMapWidgetState extends State<StoreMapWidget> {
     });
   }
 
+  bool get _hasKey => MapsConfig.embedApiKey.isNotEmpty;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,28 +67,20 @@ class _StoreMapWidgetState extends State<StoreMapWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: SizedBox(
-              height: 200,
-              width: double.infinity,
-              child: kIsWeb
-                  ? HtmlElementView(viewType: _viewType)
-                  : _buildFallback(),
+          // キーがある時だけ地図iframeを表示（無ければ店舗リストのみ）
+          if (kIsWeb && _hasKey)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(14),
+              child: SizedBox(
+                height: 200,
+                width: double.infinity,
+                child: HtmlElementView(viewType: _viewType),
+              ),
             ),
-          ),
-          const SizedBox(height: 6),
-          // 店舗リスト（タップでGoogleマップ）
+          if (kIsWeb && _hasKey) const SizedBox(height: 6),
           ...widget.places.take(5).map((p) => _buildPlaceRow(p)),
         ],
       ),
-    );
-  }
-
-  Widget _buildFallback() {
-    return Container(
-      color: Colors.grey.shade100,
-      child: const Center(child: Text('地図はWeb版で表示されます')),
     );
   }
 

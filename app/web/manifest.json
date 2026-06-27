@@ -1,11 +1,11 @@
 {
-    "name": "regretlens_app",
-    "short_name": "regretlens_app",
+    "name": "RegretLens - 後悔しない選択",
+    "short_name": "RegretLens",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#F7F6F3",
+    "theme_color": "#FF6B35",
+    "description": "迷ったらまず話してみよう。後悔しにくい選択をAIがサポート。",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

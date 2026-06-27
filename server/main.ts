@@ -587,6 +587,49 @@ async function handleMarkNotification(body: Record<string, unknown>) {
   return json({ ok: true });
 }
 
+// ============ 静的配信（PWA） ============
+
+const WEB_ROOT = new URL("../app/build/web/", import.meta.url);
+const MIME: Record<string, string> = {
+  html: "text/html; charset=utf-8",
+  js: "text/javascript; charset=utf-8",
+  mjs: "text/javascript; charset=utf-8",
+  css: "text/css; charset=utf-8",
+  json: "application/json; charset=utf-8",
+  png: "image/png",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  svg: "image/svg+xml",
+  ico: "image/x-icon",
+  wasm: "application/wasm",
+  ttf: "font/ttf",
+  otf: "font/otf",
+  woff: "font/woff",
+  woff2: "font/woff2",
+  bin: "application/octet-stream",
+};
+
+function mimeFor(path: string): string {
+  const ext = path.split(".").pop()?.toLowerCase() || "";
+  return MIME[ext] || "application/octet-stream";
+}
+
+async function serveStatic(path: string): Promise<Response> {
+  let rel = path === "/" ? "index.html" : path.replace(/^\//, "");
+  try {
+    const data = await Deno.readFile(new URL(rel, WEB_ROOT));
+    return new Response(data, { headers: { "Content-Type": mimeFor(rel) } });
+  } catch {
+    // SPAフォールバック: index.html を返す
+    try {
+      const data = await Deno.readFile(new URL("index.html", WEB_ROOT));
+      return new Response(data, { headers: { "Content-Type": "text/html; charset=utf-8" } });
+    } catch {
+      return new Response("Not built", { status: 404 });
+    }
+  }
+}
+
 // 地図HTMLを返す（キーをサーバー内に隠蔽。iframeのsrcはこのエンドポイントを指す）
 function handleMapEmbed(url: URL): Response {
   const q = url.searchParams.get("q") || "飲食店";
@@ -647,7 +690,10 @@ Deno.serve(async (req) => {
       if (!uid) return json({ error: "user_id必須" }, 400);
       return await handleStats(uid);
     }
-    if (path === "/") return json({ status: "ok", service: "RegretLens API" });
+    if (path === "/health") return json({ status: "ok", service: "RegretLens API" });
+
+    // 上記APIにマッチしないGETは静的配信（PWA）
+    if (req.method === "GET") return await serveStatic(path);
 
     return json({ error: "Not Found" }, 404);
   } catch (e) {
